@@ -16,12 +16,45 @@
     <td>จำนวน</td>
   </tr>
 <?php
-$con= mysqli_connect("localhost","root","","kaset3") or die("Error: " . mysqli_error($con));
-$sql = "SELECT pd_id,pd_qty, pd_name
-			        FROM tbl_product 
-					WHERE pd_qty <= 20";
-$result = mysql_query($sql) or die('Cannot get product. ' . mysql_error());
+      
+require_once '../library/config.php';	
+$con= mysqli_connect($dbHost,$dbUser,$dbPass,$dbName) or die("Error: " . mysqli_error($con));
+$sql_11 = "SELECT tbl_product.pd_id,tbl_product.pd_qty,tbl_product.cat_id,tbl_product.pd_name,tbl_category.cat_id 
+FROM tbl_product INNER JOIN tbl_category ON tbl_product.cat_id = tbl_category.cat_id
+WHERE tbl_product.pd_qty < 50 and tbl_product.cat_id ='11' ";
+$result_11 = mysql_query($sql_11) or die('Cannot get product. ' . mysql_error());
 
+$sql_10 = "SELECT tbl_product.pd_id,tbl_product.pd_qty,tbl_product.cat_id,tbl_product.pd_name,tbl_category.cat_id 
+FROM tbl_product INNER JOIN tbl_category ON tbl_product.cat_id = tbl_category.cat_id
+WHERE tbl_product.pd_qty < 30 and tbl_product.cat_id ='10' ";
+$result_10 = mysql_query($sql_11) or die('Cannot get product. ' . mysql_error());    
+      
+$sql = "SELECT tbl_product.pd_id,tbl_product.pd_qty,tbl_product.cat_id,tbl_product.pd_name,tbl_category.cat_id 
+FROM tbl_product INNER JOIN tbl_category ON tbl_product.cat_id = tbl_category.cat_id
+WHERE tbl_product.pd_qty < 20 and tbl_product.cat_id ='8' and tbl_product.cat_id ='9'";
+$result = mysql_query($sql) or die('Cannot get product. ' . mysql_error());       
+
+      
+while($row = mysql_fetch_array($result_11)) {
+            ?>
+                <tr>
+                    <td><?php echo $row['pd_id']?></td>
+                    <td><?php echo $row['pd_name']?></td>
+                    <td><?php echo $row['pd_qty']?></td>
+                </tr>
+
+            <?php
+            }
+while($row = mysql_fetch_array($result_10)) {
+            ?>
+                <tr>
+                    <td><?php echo $row['pd_id']?></td>
+                    <td><?php echo $row['pd_name']?></td>
+                    <td><?php echo $row['pd_qty']?></td>
+                </tr>
+
+            <?php
+            }
 while($row = mysql_fetch_array($result)) {
             ?>
                 <tr>
@@ -32,6 +65,11 @@ while($row = mysql_fetch_array($result)) {
 
             <?php
             }
+            
+        
+
             ?>
+     
+      
 </table>
     </div></div>

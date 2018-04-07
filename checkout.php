@@ -9,7 +9,7 @@ if (isset($_SESSION['plaincart_customer_id'])){
 }
 else{
    echo "<script type='text/javascript'>alert('กรุณาเข้าสู่ระบบ');</script>"; 
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
+   // header('Location: ' . $_SERVER['HTTP_REFERER']);
 }
 $catId  = (isset($_GET['c']) && $_GET['c'] != '1') ? $_GET['c'] : 0;
 if (isCartEmpty()) {

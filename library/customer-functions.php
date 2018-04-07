@@ -51,27 +51,40 @@ function doCustomerLogin()
 		$errorMessage = 'You must enter the password';
 	} else {
 		// ตรวจสอบกับฐานข้อมูลว่า Username และรหัสผ่านถูกต้อง
-		$sql = "SELECT user_id
+		$sql = "SELECT user_id,user_role
 		        FROM tbl_user 
 				WHERE user_name = '$userName' AND user_password = '$hashPassword'";
 		$result = dbQuery($sql);
-	
+	/*   echo "<script type='text/javascript'>alert('kuy rai sus');</script>";*/
 		//หากตรวจพบ User
 		if (dbNumRows($result) == 1) {
 			$row = dbFetchAssoc($result);
-			$_SESSION['plaincart_customer_id'] = $row['user_id'];
+			//$_SESSION['plaincart_customer_id'] = $row['user_id'];
 			
 			// นำเอาเวลาที่ลูกค้าล็อกอินเขียนลงฐานข้อมูล
 			$sql = "UPDATE tbl_user 
 			        SET user_last_login = NOW() 
 					WHERE user_id = '{$row['user_id']}'";
 			dbQuery($sql);
-
+            
 			//กลับไปยังหน้าเว็บเพจเดิม ก่อนที่จะมีการล็อกอิน
-
-			$shoppingReturnUrl = isset($_SESSION['shop_return_url']) ? $_SESSION['shop_return_url'] : 'index.php';
+            if($row['user_role']=="customer"){
+                $_SESSION['plaincart_customer_id'] = $row['user_id'];
+                $shoppingReturnUrl = isset($_SESSION['shop_return_url']) ? $_SESSION['shop_return_url'] : 'index.php';
+                echo "<script type='text/javascript'>alert('$shoppingReturnUrl');</script>";
+               // $_SESSION['shop_return_url'] : 'admin/index.php';    
+                
 			header('Location: '.$shoppingReturnUrl);
-
+            //header('Location: '. 'index.php');       
+            }
+            else if($row['user_role']=="admin"){
+                $_SESSION['plaincart_customer_id'] = $row['user_id'];
+                /*$shoppingReturnUrl = isset($_SESSION['shop_return_url']) ? $_SESSION['shop_return_url'] : 'admin/index.php';
+            header('Location: '.$shoppingReturnUrl);*/
+                /*$shoppingReturnUrl = isset($_SESSION['shop_return_url']) ? $_SESSION['shop_return_url'] : 'admin/index.php';*/
+                 /*echo "<script type='text/javascript'>alert('$shoppingReturnUrl');</script>"; */
+                header('Location: '.'admin/index.php');
+            }
 		} else {
 			//ล็อกอินไม่ผ่าน กำหนดข้อความลงใน $errorMessage
 			$errorMessage = 'Username หรือรหัสผ่าน ไม่ถูกต้อง';

@@ -4,13 +4,21 @@ require_once 'library/cart-functions.php';
 require_once 'library/category-functions.php';
 
 if (isset($_SESSION['plaincart_customer_id'])){
-    echo "kuy";
+   // echo "kuy";
 }
-else{
-   echo "<script type='text/javascript'>alert('กรุณาเข้าสู่ระบบ');</script>"; 
-    
+else {
+   echo "<script type='text/javascript'>var con = confirm('กรุณาเข้าสู่ระบบ');
+   if(confirm == true){
+        window.location.replace('login.php');
+   }
+   else{
+        window.location.replace('index.php');
+   }</script>"; 
     //sleep(5);
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
+    //die();
+   /* header('Location: ' . $_SERVER['HTTP_REFERER'],true,303);
+    die();*/
+    
 }
 $catId  = (isset($_GET['c']) && $_GET['c'] != '1') ? $_GET['c'] : 0;
 

@@ -5,6 +5,8 @@
 	to login page. If the user session id exist and there's found
 	$_GET['logout'] in the query string logout the user
 */
+//require '../../library/customer-funtions.php';
+//require_once '../library/functions.php';
 function checkAdminUser()
 {
 	// ถ้าไม่มีการกำหนดค่า session id ก็จะ Redirect ไปยังหน้า Login อีกครั้ง
