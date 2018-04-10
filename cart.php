@@ -2,13 +2,13 @@
 require_once 'library/config.php';
 require_once 'library/cart-functions.php';
 require_once 'library/category-functions.php';
-
+require_once 'process_qty.php';
 if (isset($_SESSION['plaincart_customer_id'])){
    // echo "kuy";
 }
 else {
    echo "<script type='text/javascript'>var con = confirm('กรุณาเข้าสู่ระบบ');
-   if(confirm == true){
+   if(con == true){
         window.location.replace('login.php');
    }
    else{
@@ -125,6 +125,10 @@ for ($i = 0; $i < $numItem; $i++) {
  </tr>
  <?php
 }
+$tran_value = 0;
+/*if ($numItem > 2){
+    $tran_value = 300;
+}*/
 ?>
  <tr class="content"> 
   <td colspan="4" align="right">รวมย่อย</td>
@@ -133,12 +137,12 @@ for ($i = 0; $i < $numItem; $i++) {
  </tr>
 <tr class="content"> 
    <td colspan="4" align="right">ค่าขนส่ง </td>
-  <td align="right"><?php echo displayAmount($shopConfig['shippingCost']); ?></td>
+  <td align="right"><?php echo displayAmount($tran); ?></td>
   <td align="center">&nbsp;</td>
  </tr>
 <tr class="active"> 
    <td colspan="4" align="right">รวมสุทธิ </td>
-  <td align="right"><strong style="color:#428bca;font-size:1.2em;text-decoration:underline;"><?php echo displayAmount($subTotal + $shopConfig['shippingCost']); ?></strong></td>
+  <td align="right"><strong style="color:#428bca;font-size:1.2em;text-decoration:underline;"><?php echo displayAmount($subTotal + $tran); ?></strong></td>
   <td align="center">&nbsp;</td>
  </tr>  
  <tr class="content"> 

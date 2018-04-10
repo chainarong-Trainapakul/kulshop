@@ -1,4 +1,5 @@
 <?php
+//require_once '../library/process_ems.php';
 if (!defined('WEB_ROOT')) {
 	exit;
 }
@@ -46,7 +47,7 @@ foreach ($orderStatus as $status) {
 }
 ?>
 <p>&nbsp;</p>
-<form action="" method="get" name="frmOrder" id="frmOrder">
+<form action="" method="post" name="frmOrder" id="frmOrder">
     <table width="550" border="0"  align="center" cellpadding="5" cellspacing="1" class="detailTable">
         <tr> 
             <td colspan="2" align="center" id="infoTableHeader">รายการสั่งซื้อ</td>
@@ -66,23 +67,23 @@ foreach ($orderStatus as $status) {
         <tr> 
             <td class="label">สถานะ</td>
             <td class="content"> <select name="cboOrderStatus" id="cboOrderStatus" class="box">
-                    <?php echo $orderOption; ?> </select> <input name="btnModify" type="button" id="btnModify" value="ยืนยัน" class="box" onClick="modifyOrderStatus(<?php echo $orderId; ?>);"></td>
+                    <?php echo $orderOption; ?> </select> <input name="btnModify" type="submit" id="btnModify" value="ยืนยัน" class="box" onClick="modifyOrderStatus(<?php echo $orderId; ?>);"></td>
         </tr>
         <tr>
             <td width="150" class="label">เลขพัสดุ</td>
             <td class="content"><input name="txtid" type="text" class="box" id="txtid" size="15" maxlength="15">
-            <input name="btnSubmit" type="button" id="btnSubmit" value="ยืนยัน"  class="box" onClick="submitParcelNo();"></td>
+            <input name="btnSubmit" type="submit" id="btnSubmit" value="ยืนยัน"  class="box"></td>
 <script>
-        function submitParcelNo(){
+/*        function submitParcelNo(){
+            var string = document.getElementById("txtid").value.toString();
           <?php 
-            $parcalNo = $_GET['txtid'];
-            $sql = "UPDATE tbl_order
-            SET od_parcelno = '$parcelNo', od_last_update = NOW()
-            WHERE od_id = $orderId";
+            /*$parcelNo = $_POST['txtid'];
+            //$orderId = 1000;
+            $sql = "UPDATE tbl_order SET od_parcelno = '$parcelNo', od_last_update = NOW() WHERE od_id = '$orderId'";*/
 	//อัพเดทสถานะในฐานข้อมูล
         $result = dbQuery($sql);   ?>
             window.location.href = 'index.php';
-        }
+        }*/
 </script>     
         </tr>
     </table>
@@ -217,3 +218,36 @@ for ($i = 0; $i < $numItem; $i++) {
 </p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
+
+
+<!--INPUT EMS-->
+<?php 
+if(isset($_POST['txtid'])){
+    $parcelNo = $_POST['txtid'];
+    if($parcelNo  != '' || $parcelNo != null){
+            //$orderId = 1000;
+            $sql = "UPDATE tbl_order SET od_parcelno = '$parcelNo', od_last_update = NOW() WHERE od_id = '$orderId'";
+	//อัพเดทสถานะในฐานข้อมูล
+        $result = dbQuery($sql);   
+    echo "<script>alert('ใส่รหัส EMS เรียบร้อยแล้ว')</script>";
+    echo "<script>window.location.href = 'index.php'</script>";
+    }
+}
+if(isset($_POST['btnModify'])){
+    $cancle = $_POST['cboOrderStatus'];
+    echo $cancle ;
+    if ($cancle == "Cancelled" ){
+        echo '<script>alert("gg")</script>';
+        $sql = "Select * from tbl_order_item where od_id = '$orderId'";
+        $result = dbQuery($sql);
+        echo $result;
+        while ($row = mysql_fetch_assoc($result)) {
+            $pd_id = $row["pd_id"];
+            $od_qty= $row["od_qty"];
+            $sql_update = "update tbl_product SET pd_qty = pd_qty+'$od_qty' where pd_id = '$pd_id'";
+            dbQuery($sql_update);
+}
+        
+    }
+}
+?>

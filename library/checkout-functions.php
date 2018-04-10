@@ -1,14 +1,15 @@
 <?php
 require_once 'config.php';
-
+//require_once './process_qty.php';
 /*********************************************************
 *                 CHECKOUT FUNCTIONS 
 *********************************************************/
-function saveOrder()
-{
+function saveOrder($tran)
+{   
+    
 	$orderId       = 0;		//ในตอนแรกรหัสใบสั่งสินค้าจะเป็น 0 
 	$shopConfig = getShopConfig();
-	$shippingCost  = $shopConfig['shippingCost'];
+	$shippingCost  = $tran;
 
 	//กำหนด array() ขึ้นมา เพื่อเก็บข้อมูลของการผู้ชื้อและผู้รับสินค้า
 	$requiredField = array('hidShippingFirstName', 'hidShippingLastName', 'hidShippingEmail', 'hidShippingAddress1', 'hidShippingCity', 'hidShippingPostalCode',

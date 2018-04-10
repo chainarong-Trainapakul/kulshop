@@ -104,7 +104,15 @@ while($row = mysql_fetch_array($result)) {
             <?php
             }}
 else{
-    echo "<script type='text/javascript'>alert('กรุณาเข้าสู่ระบบ');</script>"; 
+    echo "<script type='text/javascript'>var con = confirm('กรุณาเข้าสู่ระบบ');
+    if(con == true){
+       window.location.replace('login.php');
+       
+    }
+    else{
+        window.location.replace('index.php');
+   }
+    </script>"; 
 }
 /*$sql = "SELECT user_first_name
 		        FROM tbl_user 

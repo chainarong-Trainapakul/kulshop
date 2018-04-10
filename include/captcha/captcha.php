@@ -1,7 +1,7 @@
 <?php
 session_start();	//เริ่ม session
 
-$captchaTextSize = 6;		//ความยาวของรหัส ใช้  6 ตัวอักษร
+$captchaTextSize = 4;		//ความยาวของรหัส ใช้  6 ตัวอักษร
 $md5Hash = md5(microtime().'itbookonline');		//สุ่มตัวเลขขึ้นมารวมกับข้อความที่เป็นรหัสลับ
 $key = substr($md5Hash, 0, $captchaTextSize);	//ตัดข้อความให้เหลือเพียง 6 ตัวอักษร
 

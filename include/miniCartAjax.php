@@ -3,6 +3,7 @@ require_once '../library/config.php';
 require_once '../library/category-functions.php';
 require_once '../library/product-functions.php';
 require_once '../library/cart-functions.php';
+require_once '../process_qty.php';
 
 if(isset($_GET['productAddTominCart'])){	//ตรวจสอบรหัสสินค้าที่ส่งเข้ามา
 	$productId = $_GET['productAddTominCart'];
@@ -91,11 +92,11 @@ if ($numItem > 0) {
  	</tr>
  	<tr>
  		<td align="right">Shipping</td>
-  		<td width="30%" align="right"><?php echo displayAmount($shopConfig['shippingCost']); ?></td>
+  		<td width="30%" align="right"><?php echo displayAmount($tran); ?></td>
  	</tr>
   	<tr>
   		<td align="right">Total</td>
-  		<td width="30%" align="right"><?php echo displayAmount($subTotal + $shopConfig['shippingCost']); ?></td>
+  		<td width="30%" align="right"><?php echo displayAmount($subTotal + $tran); ?></td>
  	</tr>
   	<tr>
   		<td colspan="2">&nbsp;</td>

@@ -19,7 +19,8 @@ if(isset($_POST['txtUserPrice'])){
 		$bank = (isset($_POST['txtShopBank']))?$_POST['txtShopBank']:'';
 		$time = (isset($_POST['txtUserTransfer']))?$_POST['txtUserTransfer']:'';
 		$amount = (isset($_POST['txtUserPrice']))?$_POST['txtUserPrice']:'';
-	
+	    $order_no = (isset($_POST['txtUserOrderNo']))?
+        $_POST['txtUserOrderNo']:'';
 	
 		$shopEmail  = $shopConfig['email'];
 
@@ -35,10 +36,30 @@ if(isset($_POST['txtUserPrice'])){
 				'Reply-To: '.$email."\r\n" .
 				'X-Mailer: PHP/' . phpversion();
 		@mail($shopEmail, $subject, $stringMail, $headers); 
+        
+        
+        $sql = "Insert into tbl_payment(od_id,
+        od_shipping_first_name,
+        od_payment_phone,
+        od_payment_email,
+        od_bank,
+        od_date,
+        od_amount) 
+        values('$order_no',
+        '$name',
+        '$phone',
+        '$email',
+        '$bank','
+        $time',
+        '$amount')";
+        dbQuery($sql);
+        setSuccess("แจ้งชำระเงินเสร็จสิ้น ขอบคุณที่ใช้บริการ");
 
  	}else {
  		setError('คุณกรอกรหัส Captcha ไม่ถูกต้อง');
  	}
+    
+    
 }
 
 require_once 'include/header.php';
@@ -102,9 +123,13 @@ if(isset($_SESSION['plaincart_success']) && $_SESSION['plaincart_success']!=null
 		<div class="alert alert-warning">เมื่อลูกค้าได้โอนเงินผ่านทางธนาคารเพื่อชำระค่าสินค้าไปแล้ว รบกวนลูกค้าแจ้งการชำระเงินทางโทรศัพท์หมายเลข 081-917-7716
 		หรือกรอกข้อมูลลงในแบบฟอร์มข้างล่างนี้ ทางร้านจะจัดส่งสินค้าไปยังลูกค้าโดยเร็วที่สุด 
 		</div>
-		<table align="center" cellpadding="0" cellspacing="1" class="table table-bordered table-striped table-hover">
+		<!--<table align="center" cellpadding="0" cellspacing="1" class="table table-bordered table-striped table-hover">-->
 
-			<form method="post" enctype="multipart/form-data" name="frmPaid" id="frmPaid" onSubmit="return checkCustomerSubmitInfo();">
+<!--			<form method="post" enctype="multipart/form-data" name="frmPaid" id="frmPaid" onSubmit="return checkCustomerSubmitInfo();">-->
+            			<form method="post" enctype="multipart/form-data" name="frmPaid" id="frmPaid" >
+                            
+                            		<table align="center" cellpadding="0" cellspacing="1" class="table table-bordered table-striped table-hover">
+
   				<tr> 
    					<td width="200" class="">ชื่อ <span class="label label-warning">ต้องการ</span></td>
    					<td class=""> <input name="txtUserFirstName" type="text" class="box" id="txtUserFirstName" size="32" maxlength="32"></td>
@@ -135,16 +160,39 @@ if(isset($_SESSION['plaincart_success']) && $_SESSION['plaincart_success']!=null
    					<td width="150" class="">เวลาที่โอน </td>
    					<td class=""> <input name="txtUserTransfer" type="date" class="box" id="txtUserTransfer" size="32" maxlength="32"></td>
   				</tr>
+                <tr> 
+   					<td width="150" class="">เลขที่บิล <span class="label label-warning">ต้องการ</span></td>
+   					<td class=""> <input name="txtUserOrderNo" type="text" class="box" id="txtUserOrderNo" size="32" maxlength="32" onKeyUp="checkNumber(this);"></td>
+  				</tr>
     			<tr> 
    					<td width="150" class="">จำนวนเงิน <span class="label label-warning">ต้องการ</span></td>
    					<td class=""> <input name="txtUserPrice" type="text" class="box" id="txtUserPrice" size="32" maxlength="32" onKeyUp="checkNumber(this);"></td>
   				</tr>
-  				
-            </form></table>
- 		<p align="center"> 
+                  
+                               <tr>
+                    
+                                   <td><img src='<?php echo "include/captcha/captcha.php";?>' border = '0'/>
+                                    <span class="label label-warning">ต้องการ</span>
+                                   </td> 
+                                   
+                                   <td> <input type="text" name="captcha" class="box" id="captcha" size='32' maxlength="32"></td>
+                    
+                </tr>     
+                            
+
+                            
+                              
+                               
+            </table>
+    <p align="center">
   		<input name="btnAddUser" type="submit" id="btnAddUser" value="ส่ง"  class="btn btn-primary">
   		&nbsp;&nbsp;<input name="btnCancel" type="button" id="btnCancel" value="ยกเลิก" onClick="window.location.href='<?php echo WEB_ROOT; ?>';" class="btn btn-primary">  
-      </p></div></div></div></div></div>
+                            </p>
+      </form>
+ 		<!--<p align="center"> 
+  		<input name="btnAddUser" type="submit" id="btnAddUser" value="ส่ง"  class="btn btn-primary">
+  		&nbsp;&nbsp;<input name="btnCancel" type="button" id="btnCancel" value="ยกเลิก" onClick="window.location.href='<?php echo WEB_ROOT; ?>';" class="btn btn-primary">  
+      </p>--></div></div></div></div></div>
  		
 
   			<!--************************************************************-->
@@ -162,6 +210,16 @@ if(isset($_SESSION['plaincart_success']) && $_SESSION['plaincart_success']!=null
   		<div><?php require_once 'include/widgets/widget2.php';?></div>
   	</div>
 </div>
+
+<?php 
+/*if(isset($_SESSION['txtUserFirstName'])){
+    echo '<script>alert("OK dude");</script>';
+}
+else{
+    echo '<script>alert("kuy rai sus");</script>';
+}*/
+?>
+
 
 <script>
 

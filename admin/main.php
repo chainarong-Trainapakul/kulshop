@@ -27,15 +27,29 @@ $result_11 = mysql_query($sql_11) or die('Cannot get product. ' . mysql_error())
 $sql_10 = "SELECT tbl_product.pd_id,tbl_product.pd_qty,tbl_product.cat_id,tbl_product.pd_name,tbl_category.cat_id 
 FROM tbl_product INNER JOIN tbl_category ON tbl_product.cat_id = tbl_category.cat_id
 WHERE tbl_product.pd_qty < 30 and tbl_product.cat_id ='10' ";
-$result_10 = mysql_query($sql_11) or die('Cannot get product. ' . mysql_error());    
+$result_10 = mysql_query($sql_10) or die('Cannot get product. ' . mysql_error());    
       
-$sql = "SELECT tbl_product.pd_id,tbl_product.pd_qty,tbl_product.cat_id,tbl_product.pd_name,tbl_category.cat_id 
+$sql_8 = "SELECT tbl_product.pd_id,tbl_product.pd_qty,tbl_product.cat_id,tbl_product.pd_name,tbl_category.cat_id 
 FROM tbl_product INNER JOIN tbl_category ON tbl_product.cat_id = tbl_category.cat_id
-WHERE tbl_product.pd_qty < 20 and tbl_product.cat_id ='8' and tbl_product.cat_id ='9'";
-$result = mysql_query($sql) or die('Cannot get product. ' . mysql_error());       
+WHERE tbl_product.pd_qty < 20 and tbl_product.cat_id ='8'";
+$result_8 = mysql_query($sql_8) or die('Cannot get product. ' . mysql_error());       
 
+$sql_9 = "SELECT tbl_product.pd_id,tbl_product.pd_qty,tbl_product.cat_id,tbl_product.pd_name,tbl_category.cat_id 
+FROM tbl_product INNER JOIN tbl_category ON tbl_product.cat_id = tbl_category.cat_id
+WHERE tbl_product.pd_qty < 20 and tbl_product.cat_id ='9'";
+$result_9 = mysql_query($sql_9) or die('Cannot get product. ' . mysql_error());       
       
-while($row = mysql_fetch_array($result_11)) {
+while($row = mysql_fetch_array($result_8)) {
+            ?>
+                <tr>
+                    <td><?php echo $row['pd_id']?></td>
+                    <td><?php echo $row['pd_name']?></td>
+                    <td><?php echo $row['pd_qty']?></td>
+                </tr>
+
+            <?php
+            }
+while($row = mysql_fetch_array($result_9)) {
             ?>
                 <tr>
                     <td><?php echo $row['pd_id']?></td>
@@ -55,7 +69,8 @@ while($row = mysql_fetch_array($result_10)) {
 
             <?php
             }
-while($row = mysql_fetch_array($result)) {
+            
+while($row = mysql_fetch_array($result_11)) {
             ?>
                 <tr>
                     <td><?php echo $row['pd_id']?></td>
@@ -64,9 +79,7 @@ while($row = mysql_fetch_array($result)) {
                 </tr>
 
             <?php
-            }
-            
-        
+            }        
 
             ?>
      

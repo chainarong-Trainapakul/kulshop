@@ -40,4 +40,6 @@ function modifyOrder()
 	//เปลี่ยนไปยังหน้า index.php พร้อมแสดงสถานะใหม่
 	header("Location: index.php?view=list&status=$status");    
 }
+
+
 ?>

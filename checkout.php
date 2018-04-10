@@ -4,8 +4,9 @@ require_once 'library/cart-functions.php';
 require_once 'library/checkout-functions.php';
 require_once 'library/customer-functions.php';
 require_once 'library/category-functions.php';
+require_once 'process_qty.php';
 if (isset($_SESSION['plaincart_customer_id'])){
-    echo "kuy";
+
 }
 else{
    echo "<script type='text/javascript'>alert('กรุณาเข้าสู่ระบบ');</script>"; 
@@ -23,10 +24,13 @@ if (isCartEmpty()) {
 		$includeFile = 'shippingAndPaymentInfo.php';
 		$pageTitle   = 'Checkout - Step 1 of 2';
 	} else if ($step == 2) {	//เมื่อเป็นขั้นตอนที่ 2
+/*
+        echo "<script type='text/javascript'>alert('');</script>"; 
+*/
 		$includeFile = 'checkoutConfirmation.php';
 		$pageTitle   = 'Checkout - Step 2 of 2';
 	} else if ($step == 3) {	//หรือเป็นขั้นตอนที่ 3
-		$orderId     = saveOrder();
+		$orderId     = saveOrder($tran);
 		$orderAmount = getOrderAmount($orderId);
 		
 		$_SESSION['orderId'] = $orderId;	//เก็บรหัสการสั่งสินค้าเข้า session

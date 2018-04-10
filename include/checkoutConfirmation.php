@@ -1,5 +1,6 @@
 <?php
 //ตรวจสอบว่ามาจาก step=1 และต้องแน่ใจว่าไม่มีการเข้ามายังหน้านี้โดยตรง
+require_once './process_qty.php';
 if (!defined('WEB_ROOT')
     || !isset($_GET['step']) || (int)$_GET['step'] != 2
 	|| $_SERVER['HTTP_REFERER'] != 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . '?step=1') {
@@ -81,11 +82,11 @@ for ($i = 0; $i < $numItem; $i++) {
         </tr>
         <tr class=""> 
             <td colspan="2" align="right">ค่าขนส่ง</td>
-            <td align="right"><?php echo displayAmount($shopConfig['shippingCost']); ?></td>
+            <td align="right"><?php echo displayAmount($tran); ?></td>
         </tr>
         <tr class="active"> 
             <td colspan="2" align="right">รวมสุทธิ</td>
-            <td align="right"><strong style="font-size:1.1em;"><?php echo displayAmount($shopConfig['shippingCost'] + $subTotal); ?></strong></td>
+            <td align="right"><strong style="font-size:1.1em;"><?php echo displayAmount($tran + $subTotal); ?></strong></td>
         </tr>
     </table>
     </div>
