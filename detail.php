@@ -83,6 +83,14 @@ $sql = "SELECT o.od_id, o.od_shipping_first_name, od_shipping_last_name, od_date
 		WHERE o.od_shipping_first_name ='$userFirstName'
 		GROUP BY od_id
 		ORDER BY od_id DESC;";
+    
+    
+$sql = "SELECT o.od_id, o.od_shipping_first_name,od_parcelno, od_shipping_last_name, od_date, od_status, SUM(pd_price * od_qty) + od_shipping_cost AS od_amount 
+FROM tbl_order o,
+tbl_order_item oi,
+tbl_product p 
+WHERE oi.pd_id = p.pd_id and o.od_id = oi.od_id AND o.od_shipping_first_name = 'Kulthida'
+GROUP BY od_id ORDER BY od_id DESC";
     //$test = $_SESSION['plaincart_customer_id'];
     //echo $test ;
     //$name = "SELECT * FROM tbl_user WHERE user_id = $test";
@@ -98,7 +106,8 @@ while($row = mysql_fetch_array($result)) {
                     <td><?php echo $row['od_amount']; ?></td>
                     <td><?php echo $row['od_date']; ?></td>
                     <td><?php echo $row['od_status']; ?></td>
-                    <td><?php if($row['od_parcelno']==0)echo "-"; else echo $row['od_parcelno']; ?></td>
+                    <td><?php echo $row['od_parcelno']; ?></td>
+
                 </tr>
 
             <?php

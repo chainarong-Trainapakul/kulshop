@@ -1,7 +1,7 @@
 <?php
 //require_once '/library/database.php';
 require_once 'library/config.php';
-$tran = 0 ;
+$tran = 100 ;
 $qty = 0 ; 
     $dbConn = mysql_connect ($dbHost, $dbUser, $dbPass) or die ('MySQL connect failed. ' . mysql_error());
     mysql_select_db($dbName) or die('Cannot select database. ' . mysql_error());
@@ -14,18 +14,11 @@ $qty = 0 ;
         //echo $row["ct_qty"];
 }
     //echo "\n qty : ",$qty;
-    if ($qty > 0){
-        $tran = 100; 
-    }
-    else if ($qty>1&&$qty<=5){
-        $tran =  300 ;
-       
-    }
-    else if($qty >5 && $qty <= 12){
-        $tran = 500;
-    }
-    else if($qty>12){
-        $tran = 1000 ;
-    }
+ if($qty == 1){
+     $tran = 100;
+ }
+else{
+    $tran =$tran+($qty-1)*40 ;
+}
     //echo "\n tran : ",$tran;
 ?>
