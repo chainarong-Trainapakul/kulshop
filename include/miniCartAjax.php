@@ -3,7 +3,7 @@ require_once '../library/config.php';
 require_once '../library/category-functions.php';
 require_once '../library/product-functions.php';
 require_once '../library/cart-functions.php';
-require_once '../process_qty.php';
+
 
 if(isset($_GET['productAddTominCart'])){	//ตรวจสอบรหัสสินค้าที่ส่งเข้ามา
 	$productId = $_GET['productAddTominCart'];
@@ -40,6 +40,7 @@ if(isset($_GET['productAddTominCart'])){	//ตรวจสอบรหัสส�
 	        FROM tbl_cart
 			WHERE pd_id = $productId AND ct_session_id = '$sid'";
 	$result = dbQuery($sql);
+    echo "<script>alert('process_qty')</script>";
 	
 	//ถ้าไม่เคยมีสินค้ารายการนี้มาก่อนในตะกร้า
 	if (dbNumRows($result) == 0) {
@@ -64,6 +65,7 @@ $numItem = count($cartContent);		//นับจำนวนรายการส
 
 <?php
 if ($numItem > 0) {
+    require_once '../process_qty.php';
 ?>
 <div class="panel panel-info">
   <div class="panel-heading">ตะกร้าสินค้า</div>

@@ -10,7 +10,7 @@ $customerStringMail = '';
 
 if(isset($_POST['txtUserPrice'])){
 
-	if(md5($_POST['captcha']) == $_SESSION['captchaKey']){
+/*	if(md5($_POST['captcha']) == $_SESSION['captchaKey']){*/
 
 		$name = (isset($_POST['txtUserFirstName']))?$_POST['txtUserFirstName']:'';
 
@@ -55,9 +55,9 @@ if(isset($_POST['txtUserPrice'])){
         dbQuery($sql);
         setSuccess("แจ้งชำระเงินเสร็จสิ้น ขอบคุณที่ใช้บริการ");
 
- 	}else {
+/* 	}else {
  		setError('คุณกรอกรหัส Captcha ไม่ถูกต้อง');
- 	}
+ 	}*/
     
     
 }
@@ -169,15 +169,15 @@ if(isset($_SESSION['plaincart_success']) && $_SESSION['plaincart_success']!=null
    					<td class=""> <input name="txtUserPrice" type="text" class="box" id="txtUserPrice" size="32" maxlength="32" onKeyUp="checkNumber(this);"></td>
   				</tr>
                   
-                               <tr>
+                             <!--  <tr>
                     
-                                   <td><img src='<?php echo "include/captcha/captcha.php";?>' border = '0'/>
+                                   <td><img src='<?php /*echo "include/captcha/captcha.php"*/;?>' border = '0'/>
                                     <span class="label label-warning">ต้องการ</span>
                                    </td> 
                                    
                                    <td> <input type="text" name="captcha" class="box" id="captcha" size='32' maxlength="32"></td>
                     
-                </tr>     
+                </tr>     -->
                             
 
                             

@@ -236,8 +236,10 @@ if(isset($_POST['txtid'])){
 if(isset($_POST['btnModify'])){
     $cancle = $_POST['cboOrderStatus'];
     echo $cancle ;
+    //echo "<script>modifyOrderStatus('$orderId');</script>";
+    //echo "<script>alert('$cancle');</script>";
     if ($cancle == "Cancelled" ){
-        echo '<script>alert("gg")</script>';
+        //echo '<script>alert("gg")</script>';
         $sql = "Select * from tbl_order_item where od_id = '$orderId'";
         $result = dbQuery($sql);
         echo $result;
@@ -249,5 +251,6 @@ if(isset($_POST['btnModify'])){
 }
         
     }
+        echo "<script>window.location.href = 'processOrder.php?action=modify&oid=' + '$orderId' + '&status=' + '$cancle';</script>";
 }
 ?>

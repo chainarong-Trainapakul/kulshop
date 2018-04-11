@@ -14,11 +14,13 @@ $qty = 0 ;
         //echo $row["ct_qty"];
 }
     //echo "\n qty : ",$qty;
- if($qty == 1){
+ if($qty > 1 ){
+     $tran =$tran+(($qty-1)*40);
+ }
+ else if($qty == 1){
      $tran = 100;
  }
-else{
-    $tran =$tran+($qty-1)*40 ;
-}
+
+
     //echo "\n tran : ",$tran;
 ?>

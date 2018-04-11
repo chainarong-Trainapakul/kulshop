@@ -9,7 +9,7 @@ session_start();
 // database connection config
 $dbHost = 'localhost';
 $dbUser = 'root';
-$dbPass = '';
+$dbPass = 'password';
 $dbName = 'kaset3';
 
 // setting up the web root and server root for

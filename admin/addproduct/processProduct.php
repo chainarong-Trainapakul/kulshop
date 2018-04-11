@@ -1,6 +1,6 @@
 <?php
-
-$con= mysqli_connect("localhost","root","","kaset3") or die("Error: " . mysqli_error($con));
+require_once '../../library/config.php';
+$con= mysqli_connect($dbHost,$dbUser,$dbPass ,$dbName ) or die("Error: " . mysqli_error($con));
 //require_once '../../library/config.php';
 //require_once '../library/functions.php';
 //
