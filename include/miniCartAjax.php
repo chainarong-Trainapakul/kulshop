@@ -40,7 +40,7 @@ if(isset($_GET['productAddTominCart'])){	//ตรวจสอบรหัสส�
 	        FROM tbl_cart
 			WHERE pd_id = $productId AND ct_session_id = '$sid'";
 	$result = dbQuery($sql);
-    echo "<script>alert('process_qty')</script>";
+    /*echo "<script>alert('process_qty')</script>";*/
 	
 	//ถ้าไม่เคยมีสินค้ารายการนี้มาก่อนในตะกร้า
 	if (dbNumRows($result) == 0) {
