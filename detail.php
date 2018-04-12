@@ -89,7 +89,7 @@ $sql = "SELECT o.od_id, o.od_shipping_first_name,od_parcelno, od_shipping_last_n
 FROM tbl_order o,
 tbl_order_item oi,
 tbl_product p 
-WHERE oi.pd_id = p.pd_id and o.od_id = oi.od_id AND o.od_shipping_first_name = 'Kulthida'
+WHERE oi.pd_id = p.pd_id and o.od_id = oi.od_id AND o.od_shipping_first_name = '$userFirstName'
 GROUP BY od_id ORDER BY od_id DESC";
     //$test = $_SESSION['plaincart_customer_id'];
     //echo $test ;

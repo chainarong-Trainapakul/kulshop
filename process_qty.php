@@ -8,12 +8,14 @@ $qty = 0 ;
     $sql = "select * from tbl_cart" ;
     $result = mysql_query($sql) or die(mysql_error());
 
-    //echo $result;    
+    //echo $result;   
+$qty =0 ; 
     while ($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
         $qty = $qty + (int)$row["ct_qty"];
         //echo $row["ct_qty"];
 }
-    //echo "\n qty : ",$qty;
+
+//echo "<script>alert('$qty');<\script>";
  if($qty > 1 ){
      $tran =$tran+(($qty-1)*40);
  }

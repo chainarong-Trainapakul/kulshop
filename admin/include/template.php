@@ -34,6 +34,7 @@ for ($i = 0; $i < $n; $i++) {
 	  <a href="<?php echo WEB_ROOT; ?>admin/addproduct/" class="leftnav">เพิ่มสินค้า</a>
       <a href="<?php echo WEB_ROOT; ?>admin/order/?status=Paid" class="leftnav">รายการสั่งซื้อ</a> 
       <a href="<?php echo WEB_ROOT; ?>admin/config/" class="leftnav">ข้อมูลร้านค้า</a> 
+        <a href="<?php echo WEB_ROOT; ?>admin/category/" class="leftnav">รายการชำระเงิน</a> 
 	  <a href="<?php echo WEB_ROOT; ?>admin/user/" class="leftnav">ข้อมูลผู้ใช้</a> 
     <a href="<?php echo $self; ?>?logout" class="leftnav">ออกจากระบบ</a>
       <p>&nbsp;</p>
