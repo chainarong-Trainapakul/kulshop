@@ -82,7 +82,7 @@ function getCartContent()
 	//เลือกข้อมูลจาก 3 ตาราง ได้แก่ tbl_cart, tbl_product และ tbl_category
 	$sql = "SELECT ct_id, ct.pd_id, ct_qty, pd_name, pd_price, pd_thumbnail, pd.cat_id, pd.pd_qty
 			FROM tbl_cart ct, tbl_product pd, tbl_category cat
-			WHERE ct_session_id = '$sid' AND ct.pd_id = pd.pd_id AND cat.cat_id = pd.cat_id";
+			WHERE ct_session_id = '$sid' AND ct.pd_id = pd.pd_id AND cat.cat_id = pd.cat_id ";
 	
 	$result = dbQuery($sql);		//เลือกโดยอ้างอิงจาก session id ในปัจจุบัน
 	

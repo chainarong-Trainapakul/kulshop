@@ -4,12 +4,14 @@ ini_set('display_errors', 'On');
 error_reporting(E_ALL ^ E_DEPRECATED);
 
 // start the session
+/*session_destroy();*/
 session_start();
 
 // database connection config
+//$dbHost = 'stertorous-caution.000webhostapp.com:45989';
 $dbHost = 'localhost';
 $dbUser = 'root';
-$dbPass = '';
+$dbPass = 'password';
 $dbName = 'kaset3';
 
 // setting up the web root and server root for

@@ -106,6 +106,7 @@ function doCustomerLogout()
 	}
 	$shoppingReturnUrl = isset($_SESSION['shop_return_url']) ? $_SESSION['shop_return_url'] : 'index.php';
 	header('Location: '.$shoppingReturnUrl);	//กลับไปยังหน้าล่าสุดที่เข้ามา
+    session_destroy();
 	exit;
 }
 

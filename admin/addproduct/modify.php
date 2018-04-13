@@ -63,7 +63,9 @@ $categoryList = buildCategoryOptions($cat_id);
  
     
  <p align="center"> 
+<!--
   <input name="btnModifyProduct" type="button" id="btnModifyProduct" value="Modify Product" onClick="checkAddProductForm();" class="box">
+-->
   &nbsp;&nbsp;<input name="btnCancel" type="button" id="btnCancel" value="Cancel" onClick="window.location.href='index.php';" class="box">  
  </p>
 </form>
