@@ -17,7 +17,9 @@ function saveOrder($tran)
 	//ตรวจสอบข้อมูลของผู้ซื้อ และผู้รับสินค้า			
 	if (checkRequiredPost($requiredField)) {
 	    extract($_POST);
-		
+        $check_lang = substr($hidShippingFirstName, 0);
+        if(ctype_alpha($check_lang)){
+		/*if(mb_substr($hidShippingFirstName) ==''){*/
 		// กำหนดให้อักษรตัวแรกเป็นตัวใหญ่ 
 		$hidShippingFirstName = ucwords($hidShippingFirstName);
 		$hidShippingLastName  = ucwords($hidShippingLastName);
@@ -25,7 +27,12 @@ function saveOrder($tran)
 		$hidPaymentLastName   = ucwords($hidPaymentLastName);
 		$hidShippingCity      = ucwords($hidShippingCity);
 		$hidPaymentCity       = ucwords($hidPaymentCity);
-				
+        }
+		/*$hidShippingFirstName = ucfirst($hidShippingFirstName);	$hidShippingLastName  = ucfirst($hidShippingLastName);
+        $hidPaymentFirstName  = ucfirst($hidPaymentFirstName);
+		$hidPaymentLastName   = ucfirst($hidPaymentLastName);
+		$hidShippingCity      = ucfirst($hidShippingCity);
+		$hidPaymentCity       = ucfirst($hidPaymentCity);*/
 		//ดึงข้อมูลจากตะกร้าสินค้ามาเก็บที่ตัวแปร $cartContent ซึ่งผลลัพธ์จะเป็น array()	
 		$cartContent = getCartContent();
 		$numItem     = count($cartContent);

@@ -35,7 +35,7 @@ $sql = "SELECT od_date, od_last_update, od_status, od_shipping_first_name, od_sh
 $result = dbQuery($sql);
 extract(dbFetchAssoc($result));
 //กรณีต้องการเปลี่ยนสถานะของใบสั่งซื้อ ให้กำหนด Drop down list แสดงสถานะที่สามารถเปลี่ยนได้
-$orderStatus = array('New', 'Paid', 'Shipped', 'Completed', 'Cancelled');
+$orderStatus = array('สั่งซื้อ', 'ชำระเงินเรียบร้อย', 'เตรียมการจัดส่ง', 'จัดส่งเรียบร้อย', 'ยกเลิก');
 $orderOption = '';
 foreach ($orderStatus as $status) {
 	$orderOption .= "<option value=\"$status\"";

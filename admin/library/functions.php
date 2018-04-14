@@ -1,5 +1,5 @@
 <?php
-
+//require_once './../library/config.php';
 /*
 	Check if a session user id exist or not. If not set redirect
 	to login page. If the user session id exist and there's found
@@ -10,7 +10,7 @@
 function checkAdminUser()
 {
 	// ถ้าไม่มีการกำหนดค่า session id ก็จะ Redirect ไปยังหน้า Login อีกครั้ง
-	if (!isset($_SESSION['plaincart_user_id'])) {
+	if (!isset($_SESSION['plaincart_customer_id'])) {
 		header('Location: ' . WEB_ROOT . 'admin/login.php');
 		exit;
 	}
@@ -82,8 +82,8 @@ function doLogin()
 */
 function doLogout()
 {
-	if (isset($_SESSION['plaincart_user_id'])) {
-		unset($_SESSION['plaincart_user_id']);	//ล้างค่าออกจากตัวแปร $_SESSION
+	if (isset($_SESSION['plaincart_customer_id'])) {
+		unset($_SESSION['plaincart_customer_id']);	//ล้างค่าออกจากตัวแปร $_SESSION
 	}
 		
 	//กลับไปยังหน้าล็อกอินอีกครั้ง	
