@@ -6,7 +6,7 @@ require_once 'config.php';
 *********************************************************/
 function saveOrder($tran)
 {   
-    
+    $user_id = $_SESSION['plaincart_customer_id'];
 	$orderId       = 0;		//ในตอนแรกรหัสใบสั่งสินค้าจะเป็น 0 
 	$shopConfig = getShopConfig();
 	$shippingCost  = $tran;
@@ -31,11 +31,11 @@ function saveOrder($tran)
 		$numItem     = count($cartContent);
 		
 		//เซฟรายละเอียดการสั่งซื้อ 
-		$sql = "INSERT INTO tbl_order(od_date, od_last_update, od_shipping_first_name, od_shipping_last_name, od_shipping_email, od_shipping_address1, 
+		$sql = "INSERT INTO tbl_order(od_date,user_id, od_last_update, od_shipping_first_name, od_shipping_last_name, od_shipping_email, od_shipping_address1, 
 		                              od_shipping_address2, od_shipping_phone, od_shipping_state, od_shipping_city, od_shipping_postal_code, od_shipping_cost,
                                       od_payment_first_name, od_payment_last_name, od_payment_email, od_payment_address1, od_payment_address2, 
 									  od_payment_phone, od_payment_state, od_payment_city, od_payment_postal_code)
-                VALUES (NOW(), NOW(), '$hidShippingFirstName', '$hidShippingLastName', '$hidShippingEmail', '$hidShippingAddress1', 
+                VALUES (NOW(),'$user_id' ,NOW(), '$hidShippingFirstName', '$hidShippingLastName', '$hidShippingEmail', '$hidShippingAddress1', 
 				        '$hidShippingAddress2', '$hidShippingPhone', '$hidShippingState', '$hidShippingCity', '$hidShippingPostalCode', '$shippingCost',
 						'$hidPaymentFirstName', '$hidPaymentLastName', '$hidPaymentEmail', '$hidPaymentAddress1', 
 						'$hidPaymentAddress2', '$hidPaymentPhone', '$hidPaymentState', '$hidPaymentCity', '$hidPaymentPostalCode')";

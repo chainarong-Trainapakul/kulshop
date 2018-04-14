@@ -28,7 +28,8 @@ $result     = dbQuery(getPagingQuery($sql, $rowsPerPage));
 $pagingLink = getPagingLink($sql, $rowsPerPage, $queryString);
 
 //ใส่ค่าสถานะของใบสั่งซื้อลงใน array()
-$orderStatus = array('New', 'Paid', 'Shipped', 'Completed', 'Cancelled');
+/*$orderStatus = array('New', 'Paid', 'Shipped', 'Completed', 'Cancelled');*/
+$orderStatus = array('สั่งซื้อ', 'ชำระเงินเรียบร้อย', 'เตรียมการจัดส่ง', 'จัดส่งเรียบร้อย', 'ยกเลิก');
 $orderOption = '';
 foreach ($orderStatus as $stat) {	//กำหนดสถานะของใบสั่งซื้อใน Drop down list
 	$orderOption .= "<option value=\"$stat\"";

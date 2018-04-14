@@ -238,7 +238,7 @@ if(isset($_POST['btnModify'])){
     echo $cancle ;
     //echo "<script>modifyOrderStatus('$orderId');</script>";
     //echo "<script>alert('$cancle');</script>";
-    if ($cancle == "Cancelled" ){
+    if ($cancle == "ยกเลิก" ){
         //echo '<script>alert("gg")</script>';
         $sql = "Select * from tbl_order_item where od_id = '$orderId'";
         $result = dbQuery($sql);

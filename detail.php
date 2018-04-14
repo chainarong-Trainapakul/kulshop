@@ -84,13 +84,13 @@ $sql = "SELECT o.od_id, o.od_shipping_first_name, od_shipping_last_name, od_date
 		GROUP BY od_id
 		ORDER BY od_id DESC;";
     
-    
+$user_id = $_SESSION['plaincart_customer_id'];   
 $sql = "SELECT o.od_id, o.od_shipping_first_name,od_parcelno, od_shipping_last_name, od_date, od_status, SUM(pd_price * od_qty) + od_shipping_cost AS od_amount 
 FROM tbl_order o,
 tbl_order_item oi,
 tbl_product p 
-WHERE oi.pd_id = p.pd_id and o.od_id = oi.od_id AND o.od_shipping_first_name = '$userFirstName'
-GROUP BY od_id ORDER BY od_id DESC";
+WHERE oi.pd_id = p.pd_id and o.od_id = oi.od_id AND o.user_id = '$user_id' GROUP BY od_id ORDER BY od_id DESC";
+    //o.od_shipping_first_name = '$userFirstName'
     //$test = $_SESSION['plaincart_customer_id'];
     //echo $test ;
     //$name = "SELECT * FROM tbl_user WHERE user_id = $test";
