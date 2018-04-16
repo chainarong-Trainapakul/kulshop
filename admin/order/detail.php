@@ -242,7 +242,7 @@ if(isset($_POST['btnModify'])){
         //echo '<script>alert("gg")</script>';
         $sql = "Select * from tbl_order_item where od_id = '$orderId'";
         $result = dbQuery($sql);
-        echo $result;
+        //echo $result;
         while ($row = mysql_fetch_assoc($result)) {
             $pd_id = $row["pd_id"];
             $od_qty= $row["od_qty"];

@@ -59,8 +59,10 @@ switch ($view) {
     <td>Customer Name</td> 
     <td>Amount</td>
     <td>Order Time</td>
+    <td>Expire date</td>
     <td>Status</td>
     <td>Parcel #</td>  
+    
   </tr>
 <?php
 if(isset($_SESSION['plaincart_customer_id'])){
@@ -85,7 +87,7 @@ $sql = "SELECT o.od_id, o.od_shipping_first_name, od_shipping_last_name, od_date
 		ORDER BY od_id DESC;";
     
 $user_id = $_SESSION['plaincart_customer_id'];   
-$sql = "SELECT o.od_id, o.od_shipping_first_name,od_parcelno, od_shipping_last_name, od_date, od_status, SUM(pd_price * od_qty) + od_shipping_cost AS od_amount 
+$sql = "SELECT o.od_exp_date,o.od_id, o.od_shipping_first_name,od_parcelno, od_shipping_last_name, od_date, od_status, SUM(pd_price * od_qty) + od_shipping_cost AS od_amount 
 FROM tbl_order o,
 tbl_order_item oi,
 tbl_product p 
@@ -97,17 +99,22 @@ WHERE oi.pd_id = p.pd_id and o.od_id = oi.od_id AND o.user_id = '$user_id' GROUP
    // echo $name ;
  //echo $sql ;   
 $result = mysql_query($sql) or die('Cannot get product. ' . mysql_error());
-
+//$threeday = check_date_3day();
 while($row = mysql_fetch_array($result)) {
+/*    $temp_od_id = $row['od_id'];
+    $sql_date = "select od_date from tbl_order where od_date and od_id = '$temp_od_id'";
+    $result_date =mysql_query($sql_date) or die('Cannot get query. ' . mysql_error());
+    $query = check_date_3day($result_date);*/
             ?>
                 <tr>
                     <td><a href="detail.php?view=detailPar&oid=<?php echo $row['od_id']; ?>"><?php echo  $row['od_id']; ?></a></td>
                     <td><?php echo $row['od_shipping_first_name'];  echo " " . $row['od_shipping_last_name']; ?></td>
                     <td><?php echo $row['od_amount']; ?></td>
                     <td><?php echo $row['od_date']; ?></td>
+                     <td><?php echo $row['od_exp_date']; ?></td>
                     <td><?php echo $row['od_status']; ?></td>
                     <td><?php echo $row['od_parcelno']; ?></td>
-
+                   
                 </tr>
 
             <?php

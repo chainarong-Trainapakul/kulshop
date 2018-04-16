@@ -29,7 +29,7 @@ $rowsPerPage = 5;
 		$sql2 
 		ORDER BY pd_name";*/
 //$sql = "sELECT * from tbl_payment " ;	
-$sql = 'SELECT * FROM tbl_order INNER JOIN tbl_payment ON tbl_payment.od_id = tbl_order.od_id and tbl_order.od_status = "new"';
+$sql = 'SELECT * FROM tbl_order INNER JOIN tbl_payment ON tbl_payment.od_id = tbl_order.od_id and tbl_order.od_status = "สั่งซื้อ"';
 //คิวรี่ข้อมูลจากตาราง โดยจะแสดงสินค้าเฉพาะหน้าซึ่งได้คลิกเลือก แต่ถ้าไม่มีการกำหนดเลขหน้า 
 //จะไปยังหน้าแรก
 $result     = dbQuery(getPagingQuery($sql, $rowsPerPage));

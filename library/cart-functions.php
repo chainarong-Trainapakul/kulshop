@@ -114,7 +114,7 @@ function getCartNumItems()
 	$result = dbQuery($sql);
 	$numRow = dbNumRows($result);
 	return $numRow;
-}
+} 
 
 /*
 	Remove an item from the cart
@@ -231,6 +231,15 @@ function deleteAbandonedCart()
 	$sql = "DELETE FROM tbl_cart
 	        WHERE ct_date < '$yesterday'";
 	dbQuery($sql);		
+}
+function check_date_3day($result_date){
+    date_default_timezone_set("Asia/Bangkok");
+    $expire_date  ='';
+   while($row = mysql_fetch_array($result_date)) {
+    $phpdate = strtotime( $row['od_date'] );
+    $expire_date = date('Y-m-d H:i:s', $phpdate.strtotime("+3 days"));
+   }
+     return $expire_date;
 }
 
 

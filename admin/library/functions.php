@@ -10,7 +10,7 @@
 function checkAdminUser()
 {
 	// ถ้าไม่มีการกำหนดค่า session id ก็จะ Redirect ไปยังหน้า Login อีกครั้ง
-	if (!isset($_SESSION['plaincart_customer_id'])) {
+	if (!isset($_SESSION['plaincart_user_id'])) {
 		header('Location: ' . WEB_ROOT . 'admin/login.php');
 		exit;
 	}
@@ -82,12 +82,12 @@ function doLogin()
 */
 function doLogout()
 {
-	if (isset($_SESSION['plaincart_customer_id'])) {
-		unset($_SESSION['plaincart_customer_id']);	//ล้างค่าออกจากตัวแปร $_SESSION
+	if (isset($_SESSION['plaincart_user_id'])) {
+		unset($_SESSION['plaincart_user_id']);	//ล้างค่าออกจากตัวแปร $_SESSION
 	}
 		
 	//กลับไปยังหน้าล็อกอินอีกครั้ง	
-	header('Location: login.php');
+	header('Location: ./../index.php');
 	exit;
 }
 //function returnToStock(){

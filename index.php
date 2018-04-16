@@ -3,6 +3,7 @@ require_once 'library/config.php';
 require_once 'library/category-functions.php';
 require_once 'library/product-functions.php';
 require_once 'library/cart-functions.php';
+require_once 'library/check_expire.php';
 //include 'include/variable.php';
 //include 'include/nevMenu.php';
 //เก็บค่า URL ก่อนที่จะมาหน้านี้เอาไว้ เพื่อที่จะได้ย้อนกลับไปได้
@@ -12,7 +13,10 @@ $_SESSION['shop_return_url'] = $_SERVER['REQUEST_URI'];
 //ถ้ามีการส่งข้อความค้นหามา ก็จะใช้ค้นหาสินค้าจากข้อความนี้
 $searchTerm = (isset($_GET['plainCartSearch']))?mysql_real_escape_string($_GET['plainCartSearch']):'';
 $catId  = (isset($_GET['c']) && $_GET['c'] != '1') ? $_GET['c'] : 0;
-
+//$u_id = $user_id = $_SESSION['plaincart_customer_id'];
+if(isset( $_SESSION['plaincart_customer_id'])){
+check_expire_order();
+}
 //หากมีการส่งรหัสสินค้ามา ก็จะนำมาใช้แสดงสินค้านั้นๆ
 function valid_pdId($get)
 {
