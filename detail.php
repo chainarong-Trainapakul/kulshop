@@ -105,9 +105,11 @@ while($row = mysql_fetch_array($result)) {
     $sql_date = "select od_date from tbl_order where od_date and od_id = '$temp_od_id'";
     $result_date =mysql_query($sql_date) or die('Cannot get query. ' . mysql_error());
     $query = check_date_3day($result_date);*/
+    $od_id = $row['od_id'];
             ?>
                 <tr>
-                    <td><a href="detail.php?view=detailPar&oid=<?php echo $row['od_id']; ?>"><?php echo  $row['od_id']; ?></a></td>
+                    <td><a href="order_item.php?od_id=<?php echo $od_id?>"><?php echo  $row['od_id']; ?></a></td>
+                   <!-- <td><a href="detail.php?view=detailPar&oid=<?php /*echo $row['od_id'];*/ ?>"><?php/* echo  $row['od_id'];*/ ?></a></td>-->
                     <td><?php echo $row['od_shipping_first_name'];  echo " " . $row['od_shipping_last_name']; ?></td>
                     <td><?php echo $row['od_amount']; ?></td>
                     <td><?php echo $row['od_date']; ?></td>

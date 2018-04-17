@@ -97,6 +97,32 @@ function getCartContent()
 	
 	return $cartContent;	//รีเทิร์นค่าจาก array() กลับไป
 }
+function getOrderItemContent($od_id)  
+{
+	$cartContent = array();		//กำหนดตัวแปรแบบ array()
+    //echo "<script>alert('$od_id')</script>";
+	$sid = session_id();		//เก็บค่า session id ในปัจจุบัน
+	//เลือกข้อมูลจาก 3 ตาราง ได้แก่ tbl_cart, tbl_product และ tbl_category
+	$sql = "select * from tbl_order_item oi,tbl_product p where oi.od_id ='$od_id' and oi.pd_id = p.pd_id";
+	$result = dbQuery($sql);		//เลือกโดยอ้างอิงจาก session id ในปัจจุบัน
+
+	while ($row = mysql_fetch_assoc($result)) {
+    
+		if ($row['pd_thumbnail']) {	//นำเอาภาพ thumbnail ออกมา
+			$row['pd_thumbnail'] = WEB_ROOT . 'images/product/' . $row['pd_thumbnail'];
+		} else {		//ถ้าไม่มี thumbnail ใช้รูปที่เตรียมไว้แทน
+			$row['pd_thumbnail'] = WEB_ROOT . 'images/no-image-small.png';
+		}
+
+        /*echo "<script>alert('$result')</script>";
+        echo "<script>alert('gg')</script>";*/
+		$cartContent[] = $row;	//นำข้อมูลจากฐานข้อมูลเก็บเข้า array
+	}
+/*    echo "<script>alert('$count')</script>";
+    echo "<script>alert('$od_id_str')</script>";*/
+	//echo "<script>alert('$row[$od_id_str]')</script>";
+	return $cartContent;	//รีเทิร์นค่าจาก array() กลับไป
+}
 
 /*
 	Get all item in current session
