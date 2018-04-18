@@ -3,7 +3,7 @@ require_once 'config.php';
 function check_expire_order(){
     date_default_timezone_set("Asia/Bangkok");
     $user_id = $_SESSION['plaincart_customer_id'];
-    $sql = "select  od_id,user_id,od_exp_date,od_status from tbl_order where user_id = '$user_id' and od_status == 'สั่งซื้อ'";
+    $sql = "select  od_id,user_id,od_exp_date,od_status from tbl_order where user_id = '$user_id' and od_status = 'สั่งซื้อ'";
     $result = dbQuery($sql);
     $exp_hour = date('H');
     $exp_minute = date('i');
