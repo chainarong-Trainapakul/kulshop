@@ -28,32 +28,60 @@ extract($row);
 
 $pd_name = $row['pd_name'];
 $categoryList = buildCategoryOptions($cat_id); 
+
+
 ?> 
+<td><p> ชนิดสินค้า </p><select type="text" name="category_id" id='category_id'><option value="FUCK YOU_1">FUCK YOU 1</option>
+                <option value="FUCK YOU_2" >FUCK YOU 2</option>
+                <option value="FUCK YOU_3" >FUCK YOU 3</option>
+                <option value="FUCK YOU_4" >FUCK YOU 4</option>
+            
+                </select></td>
+     <?php
+	               /*echo $categoryList;	*/	//แสดงประเภทสินค้าในแบบ Drop down list
+                /*echo $categoryList*/
+                $gg =  $_GET['category_id'];
+echo $gg ;
+                ?>	
 <form action="processProduct.php" method="POST" enctype="multipart/form-data" name="frmAddProduct" id="frmAddProduct">
  <p align="center" class="formTitle">แก้ไขสินค้า</p>
  
-   <select input type="text" name="cat_id"><option value="" selected>-- เลือกประเภทสินค้า --</option>
-<?php
-	echo $categoryList;		//แสดงประเภทสินค้าในแบบ Drop down list
-?>	 
-    </select>
+   
+
   <form action="add_product_db.php" method="POST" enctype="multipart/form-data"  name="addprd" class="form-horizontal" id="addprd">
-    
-            <p> รหัสสินค้า</p>
-            <input type="text"  name="pd_id" class="form-control" value ="<?php echo $productId; ?>" />
+      <table>
+                <td><p> เลขที่ใบเสร็จ </p>
+               <input type="text"  name="re_no" class="form-control"  rows="3"  required placeholder="เลขที่ใบเสร็จ"></td>
+      </table>
+    <!--  <p> ชนิดสินค้า </p><p> รหัสสินค้า</p><p> ชื่อสินค้า</p><p>จำนวน</p>-->
+    <table>
+            <td><p> ชนิดสินค้า </p><select input type="text" name="cat_id" id='cat_id'><option value="FUCK YOU 1" selected>FUCK YOU 1</option>
+                <option value="FUCK YOU 2" selected>FUCKYOU2</option>
+                <option value="FUCK YOU 3" selected>FUCKYOU3</option>
+                <option value="FUCK YOU 4" selected>FUCKYOU4</option>
+                <?php
+	               /*echo $categoryList;	*/	//แสดงประเภทสินค้าในแบบ Drop down list
+                /*echo $categoryList*/
+                ?>	 
+                </select></td>
+                <?php 
+                    //echo $_POST['cat_id'] ;
+                ?>
+            <td><p> รหัสสินค้า</p>
+                <input type="text"  name="pd_id" class="form-control" value ="<?php echo $productId; ?>" /></td>
           
-            <p> ชื่อสินค้า</p>
-            <input type="text"  name="pd_name" class="form-control" value ="<?php echo $pd_name; ?>" />
+            <td><p> ชื่อสินค้า</p>
+                <input type="text"  name="pd_name" class="form-control" value ="<?php echo $pd_name; ?>" /></td>
     
-            <p> เลขที่ใบเสร็จ </p>
-            <input type="text"  name="re_no" class="form-control"  rows="3"  required placeholder="เลขที่ใบเสร็จ">
-            <p>จำนวน</p>
-            <input type="text"  name="qty" class="form-control" required placeholder="จำนวน" />
+            <td><p>จำนวน</p>
+            <input type="text"  name="qty" class="form-control" required placeholder="จำนวน" /></td>
     
              <!-- <?php  date_default_timezone_set('Asia/Bangkok');
               $datenow = time();?>
       <p>วันเดือนปี</p> 
      <input name="re_date" type="date" class="box" id="txtUserTransfer" value="<?php echo $datenow; ?>"size="32" maxlength="32">-->
+      </table>
+
             <p>
             <button > เพิ่มสินค้า </button>
             </p>

@@ -127,17 +127,23 @@ function doCustomerAddToDatabase()
 		$postalCode = $_POST['txtUserPostalCode'];
 		$hashPassword = md5($password.SECRET_KEY);
 		$role = 'customer';	
-
+        $address2 = $_POST['txtUserAddress2'];
+        $address1 = $_POST['txtUserAddress'];
 	//ตรวจสอบว่ามีชื่อ Username นี้อยู่ในระบบแล้วหรือไม่
 		$sql = "SELECT user_name
 	        FROM tbl_user
 			WHERE user_name = '$userName'";
 		$result = dbQuery($sql);
 	
-		if (dbNumRows($result) == 1) {
-			header('Location: register.php?error=' . urlencode('Username มีอยู่แล้ว กรุณาเลือกชื่ออื่น'));		//ส่งค่า error กลับไปแสดงให้ลูกค้าทราบ
+		if (dbNumRows($result) >= 1) {
+			header('Location: register.php?error=' . urlencode("Username มีอยู่แล้ว กรุณาเลือกชื่ออื่น")."&username=$userName&password=$password&firstname=$firstName&lastname=$lastName&email=$email&address=$address1&address2=$address2&phone=$phone&city=$city&state=$state&portalcode=$postalCode" );	
+            /*setError('Username มีอยู่แล้ว กรุณาเลือกชื่ออื่น');
+            header('Location: register.php');*/
+            //ส่งค่า error กลับไปแสดงให้ลูกค้าทราบ
 		} else if(checkPassword($password)==false) {
-		    header('Location: register.php?error=' . urlencode('!ผิดพลาด รหัสผ่านต้องมีทั้งอักษรและตัวเลข และยาวอย่างน้อย 6 ตัวอักษร'));
+		    header("Location: register.php?error=gg?username='$userName'?password='$password'&firstname='$firstName'&lastname='$lastName'&email='$email'&address='$address'&address2='$address2'&phone='$phone'&city='$city'&state='$state'&portalcode='$postalCode'");
+            //$errorMessage2 = '!ผิดพลาด รหัสผ่านต้องมีทั้งอักษรและตัวเลข และยาวอย่างน้อย 6 ตัวอักษร';
+            //header('Location: register.php');
 		//ตรวจสอบว่าอีเมลถูกต้องหรือไม่
 	    } else if(checkEmail($email)==false){
 	    	header('Location: register.php?error=' . urlencode('!ผิดพลาด คุณกรอกอีเมล์ไม่ถูกต้อง'));
@@ -331,4 +337,5 @@ function getCustomerProfile()
 	}
 
 }
+
 ?>

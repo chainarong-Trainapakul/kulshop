@@ -91,16 +91,27 @@ function validateZipCode(zipElementValue, message) {
 }
 
 function validateUserName(userNameElementValue) { 
-
     var userNameCodeExpression = /^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]+$/i;
+    var exception = /[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/;
+    //alert(userNameElementValue);
+    //alert(typeof(userNameElementValue));
     if(userNameCodeExpression.test(userNameElementValue)){
     	if(userNameElementValue.length<6){
     		alert('Username จะต้องมีอักษรอย่างน้อย 6 ตัวอักษร');
     		return false;
     	}
     	return true;
-    } else {
-    	alert('userName จะต้องมีทั้่งอักษรและตัวเลขผสมกัน');
+    } 
+    else if(userNameElementValue.length<6 ){
+        alert("Username จะต้องมีอักษรอย่างน้อย 6 ตัวอักษร");
+        return true ;
+    }
+    else if(exception.test(userNameElementValue)){
+        alert("Username ห้ามมีอักขระพิเศษ");
+            return true;
+            }
+    else {
+    	//alert('userName ห้ามมีเครื่องหมายอักขระพิเศษ etc.(!@#$%^)');
     	return false;
     }
     

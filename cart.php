@@ -4,7 +4,7 @@ require_once 'library/cart-functions.php';
 require_once 'library/category-functions.php';
 require_once 'process_qty.php';
 if (isset($_SESSION['plaincart_customer_id'])){
-   // echo "kuy";
+   
 }
 else {
    echo "<script type='text/javascript'>var con = confirm('กรุณาเข้าสู่ระบบ');
