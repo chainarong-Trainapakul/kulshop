@@ -152,8 +152,8 @@ if(!isset($_SESSION['plaincart_customer_id'])) {
         <td class="">
         <input name="optPayment" type="radio" value="cod" id="optCod" checked="checked"/>
         <label for="optCod" style="cursor:pointer">โอนเงินผ่านธนาคาร</label>
-        <input name="optPayment" type="radio" id="optPaypal" value="paypal" />
-        <label for="optPaypal" style="cursor:pointer">Paypal</label>
+        <!--<input name="optPayment" type="radio" id="optPaypal" value="paypal" />
+        <label for="optPaypal" style="cursor:pointer">Paypal</label>-->
         </td>
       </tr>
     </table>

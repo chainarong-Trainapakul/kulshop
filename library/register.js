@@ -2,16 +2,21 @@
 function checkRegisterInfo()
 {   
     
-    clear_lable();
+    //clear_lable();
     var format_password = /^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]+$/i ;
     var format_phone = /(\b[0]{1}?\d{2}|\b[0]{1}?[2]{1})[-.]?(\d{3}[-.]?\d{4}\b|\d{3}[-.]?\d{3}\b)/;
-    var zipCodeExpression = /\b[1-9]{1}?\d{3}[0]\b/;
+    var zipCodeExpression = /^d{5}$/;
+                            
 	with (window.document.frmAddUser) {
-        document.getElementById('label_user_name2').style.display = 'none';
+      //alert(txtUserPostalCode.value);
+        //document.getElementById('label_user_name2').style.display = 'none';
           clear_lable();
     var format_password = /^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]+$/i ;
     var format_phone = /(\b[0]{1}?\d{2}|\b[0]{1}?[2]{1})[-.]?(\d{3}[-.]?\d{4}\b|\d{3}[-.]?\d{3}\b)/;
     var zipCodeExpression = /\b[1-9]{1}?\d{3}[0]\b/;
+              var a =  format_phone.test(document.getElementById('txtUserPhone').val);
+         //alert("dsfsfsdf :   "+a);  
+        
 		if (isEmpty(txtUserName, 'กรุณากรอก userName')) {
 			txtUserName.focus();
             //alert("gg1");
@@ -70,40 +75,56 @@ function checkRegisterInfo()
             document.getElementById('txtUserPassword').style.backgroundColor ='yellow';
 			return false;
 		} 
-        else if (isEmpty(txtUserEmail, 'กรุณากรอกอีเมล Email')) {
+        else if (isEmpty(txtUserEmail, 'กรุณากรอกอีเมล Email')) {  alert("txtUserEmail");
 			txtUserEmail.focus();
           label_user_email.style.display = 'block';  document.getElementById('txtUserEmail').style.backgroundColor='yellow';
 			return false;
 		} 
         else if (validateEmail(txtUserEmail.value, 'คุณกรอกอีเมล์ไม่ถูกต้อง')==false){
+            //alert("'validateEmail");
 			txtUserEmail.focus();
           label_user_email.style.display = 'block';  document.getElementById('txtUserEmail').style.backgroundColor='yellow';
 			return false;
 		}
 
        else if(document.getElementById('txtUserPhone').value != ""){
-            if(!format_phone.test(document.getElementById('txtUserPhone').value)){
+           //alert("'txtphone");
+           /* if(!format_phone.test(document.getElementById('txtUserPhone').value)){*/
+                if(!(document.getElementById('txtUserPhone').value.match(format_phone))){
                  label_user_phone.style.display = 'block';
                 alert("กรุณาใส่เบอร์โทรศัพท์ให้ถูกต้อง");
                 return false ;
             }
-       }
-        else if(txtUserPostalCode.value != ""){
+           else if(document.getElementById('txtUserPostalCode').value != ''){
             //alert("protal");
-            var gg = zipCodeExpression.test(txtUserPostalCode.value);
-            //alert(gg);
-            if(!zipCodeExpression.test(txtUserPostalCode.value)){
+            
+            if(!document.getElementById('txtUserPostalCode').value.match(zipCodeExpression)){
                 label_user_postal.style.display = 'block';
                 alert("กรุณาใส่รหัสไปรษณีย์ให้ถูกต้อง");
     	       return false;
-            }
-        }
+           }
+       }
+/*        else if(document.getElementById('txtUserPostalCode').value != ''){ 
+            if(!document.getElementById('txtUserPostalCode').value.match(zipCodeExpression)){
+                label_user_postal.style.display = 'block';
+                alert("กรุณาใส่รหัสไปรษณีย์ให้ถูกต้อง");
+    	       return false;
+           }}*/
+            //alert("protal");
+            
+            /*if(!document.getElementById('txtUserPostalCode').value.match(zipCodeExpression)){
+                label_user_postal.style.display = 'block';
+                alert("กรุณาใส่รหัสไปรษณีย์ให้ถูกต้อง");
+    	       return false;*/
+            
+        
         
     else {  
+            alert("else");
 			return true;
 		}}
  
-	}
+	}}
 function clear_lable(){
     document.getElementById('label_user_name').style.display= 'none';
     document.getElementById('label_user_password').style.display = 'none';
