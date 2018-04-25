@@ -136,7 +136,7 @@ if(isset($_SESSION['plaincart_success']) && $_SESSION['plaincart_success']!=null
   				</tr>
    				<tr> 
    					<td width="150" class="">โทรศัพท์</td>
-   					<td class=""> <input name="txtUserPhone" type="text" pattern="[0-9]" class="box" id="txtUserPhone"  
+   					<td class=""> <input name="txtUserPhone" type="text" class="box" id="txtUserPhone"  
                     size="32" maxlength="10" value=""></td>
   				</tr>
   				<tr> 

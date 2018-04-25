@@ -108,6 +108,9 @@ function doCustomerLogout()
 		unset($_SESSION['plaincart_customer_id']);
 		//ยกเลิก session
 	}
+   /* if (isset($_SESSION['plaincart_user_id'])) {
+        unset($_SESSION['plaincart_user_id']);
+    }*/
 	$shoppingReturnUrl = isset($_SESSION['shop_return_url']) ? $_SESSION['shop_return_url'] : 'index.php';
 	header('Location: '.$shoppingReturnUrl);	//กลับไปยังหน้าล่าสุดที่เข้ามา
     session_destroy();

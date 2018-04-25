@@ -95,15 +95,20 @@ if(isset($_GET['error']) && $_GET['error'] != ''){
 </style>
   <tr>  
    <td width="200" class="">ชื่อผู้ใช้ <span class="label label-warning">ต้องการ</span></td>
-   <td class=""> <input name="txtUserName" type="text" class="box" id="txtUserName" size="32" maxlength="32" placeholder = 'กรุณาใส่ชื่อผู้ใช้ <a-z,0-9>' value="<?php echo $tempName; ?>">
+   <td class=""> <input name="txtUserName" type="text" class="box" id="txtUserName" size="32" maxlength="32" placeholder = 'กรุณาใส่ชื่อผู้ใช้ <a-z,0-9>' value="<?php echo $tempName; ?>"><br><label class="label label-default" style="font-size:0.9em;" id = 'label_user_name2' >* มีผู้ใช้ชื่อนี้แล้วกรุณาเปลี่ยนเป็นชื่ออื่น</label>
        <?php 
             if($hightlight==true){ $hightlight=false; ?>
-                <br><label class="label label-default" style="font-size:0.9em;" id = 'label_user_name2' >* มีผู้ใช้ชื่อนี้แล้วกรุณาเปลี่ยนเป็นชื่ออื่น</label>
+                <!--<br><label class="label label-default" style="font-size:0.9em;" id = 'label_user_name2' >* มีผู้ใช้ชื่อนี้แล้วกรุณาเปลี่ยนเป็นชื่ออื่น</label>-->
                 <script type="application/javascript"> 
+                label_user_name2.style.display = "block";
                     hightlight();
                 </script> 
        <?php        
-            }
+            }else {?>
+                <script>
+                   label_user_name2.style.display = "none";
+                </script>
+          <?php  }
        ?>
        <label class="label label-default" style="font-size:0.9em;" id = 'label_user_name' >* กรุณาใส่ชื่อผู้ใช้ให้ถูกต้อง</label>
       </td>
@@ -124,7 +129,7 @@ if(isset($_GET['error']) && $_GET['error'] != ''){
   
   <tr> 
    <td width="150" class="">อีเมล <span class="label label-warning">ต้องการ</span></td>
-   <td class=""> <input name="txtUserEmail" type="text" class="box" id="txtUserEmail" size="32" maxlength="32" placeholder="กรุณาใส่อีเมล(example@gmail.com)" value="<?php echo $tempEmail; ?>">
+   <td class=""> <input name="txtUserEmail" type="email" class="box" id="txtUserEmail" size="32" maxlength="32" placeholder="กรุณาใส่อีเมล(example@gmail.com)" value="<?php echo $tempEmail; ?>">
       <label class="label label-default" style="font-size:0.9em;" id = 'label_user_email'>* กรุณาใส่อีเมลให้ถูกต้อง เช่น  example@gmail.com</label></td>
   </tr>
     <tr> 

@@ -85,6 +85,9 @@ function doLogout()
 	if (isset($_SESSION['plaincart_user_id'])) {
 		unset($_SESSION['plaincart_user_id']);	//ล้างค่าออกจากตัวแปร $_SESSION
 	}
+    if (isset($_SESSION['plaincart_customer_id'])){
+        unset($_SESSION['plaincart_customer_id']);
+    }	
 		
 	//กลับไปยังหน้าล็อกอินอีกครั้ง	
 	header('Location: ./../index.php');

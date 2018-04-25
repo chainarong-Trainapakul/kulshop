@@ -5,17 +5,15 @@ function checkRegisterInfo()
     //clear_lable();
     var format_password = /^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]+$/i ;
     var format_phone = /(\b[0]{1}?\d{2}|\b[0]{1}?[2]{1})[-.]?(\d{3}[-.]?\d{4}\b|\d{3}[-.]?\d{3}\b)/;
-    var zipCodeExpression = /^d{5}$/;
-   // document.getElementById('label_user_name2').style.display = 'none';                       
+    //var zipCodeExpression = /^d{5}$/;
+                       
 	with (window.document.frmAddUser) {
       //alert(txtUserPostalCode.value);
-       
+         /* document.getElementById('label_user_name2').style.display = 'none';  */ 
           clear_lable();
           var format_password = /^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]+$/i ;
           var format_phone = /(\b[0]{1}?\d{2}|\b[0]{1}?[2]{1})[-.]?(\d{3}[-.]?\d{4}\b|\d{3}[-.]?\d{3}\b)/;
           var zipCodeExpression = /\b[1-9]{1}?\d{3}[0]\b/;
-              var a =  format_phone.test(document.getElementById('txtUserPhone').val);
-         //alert("dsfsfsdf :   "+a);  
         
 		if (isEmpty(txtUserName, 'กรุณากรอก userName')) {
 			txtUserName.focus();
