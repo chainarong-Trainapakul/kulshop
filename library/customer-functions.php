@@ -1,7 +1,7 @@
 <?php
 require_once 'config.php';
 require_once 'database.php';
-require_once './admin/library/functions.php';
+//require_once './admin/library/functions.php';
 /*********************************************************
 *                 Customer FUNCTIONS 
 **********************************************************/

@@ -13,7 +13,7 @@
    <h4 align="center">กรุณากรอก</h4>
    <br />
      <form method="post" id="insert_form"> 
-      <p>เลขที่บิล  <input type='text' name = 'bill_no' class="bill_no" size = "10">  วันที่  <?php echo $current_date?> </p>
+      <p>เลขที่บิล  <input type='number' name = 'bill_no' class="bill_no" size = "10">  วันที่  <?php echo $current_date?> </p>
    <!--<form method="post" id="insert_form">-->
     <div class="table-repsonsive">
      <span id="error"></span>
@@ -41,8 +41,8 @@ $(document).ready(function(){
   var html = '';
   html += '<tr>';
   html += '<td><input type="number" name="item_no[]" class="form-control item_no" /></td>';
-  html += '<td><input type="text" name="item_name[]" class="form-control item_quantity" /></td>';
-  html += '<td><input type="text" name="item_quantity[]" class="form-control item_quantity" /></td>';
+  html += '<td><input type="text" name="item_name[]" class="form-control item_name" /></td>';
+  html += '<td><input type="number" name="item_quantity[]" class="form-control item_quantity" /></td>';
   //html += '<td><select name="item_unit[]" class="form-control item_unit"><option value="">Select Unit</option><?php /*echo fill_unit_select_box($connect); */?></select></td>';
   html += '<td><button type="button" name="remove" class="btn btn-danger btn-sm remove"><span class="glyphicon glyphicon-minus"></span></button></td></tr>';
   $('#item_table').append(html);

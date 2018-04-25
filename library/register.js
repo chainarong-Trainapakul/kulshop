@@ -1,15 +1,23 @@
 
 function checkRegisterInfo()
 {   
+    
     clear_lable();
     var format_password = /^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]+$/i ;
     var format_phone = /(\b[0]{1}?\d{2}|\b[0]{1}?[2]{1})[-.]?(\d{3}[-.]?\d{4}\b|\d{3}[-.]?\d{3}\b)/;
     var zipCodeExpression = /\b[1-9]{1}?\d{3}[0]\b/;
 	with (window.document.frmAddUser) {
+          clear_lable();
+    var format_password = /^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]+$/i ;
+    var format_phone = /(\b[0]{1}?\d{2}|\b[0]{1}?[2]{1})[-.]?(\d{3}[-.]?\d{4}\b|\d{3}[-.]?\d{3}\b)/;
+    var zipCodeExpression = /\b[1-9]{1}?\d{3}[0]\b/;
 		if (isEmpty(txtUserName, 'กรุณากรอก userName')) {
 			txtUserName.focus();
+            //alert("gg1");
             label_user_name.style.display= 'block';
-            document.getElementById('txtUserName').style.backgroundColor = 'yellow';
+            //alert("gg2");  document.getElementById('txtUserName').style.backgroundColor = 'yellow';
+           // window.location.href = 'kulshop/register.php';
+            //alert("gg3");
 			return false;
         
 		}
@@ -44,7 +52,7 @@ function checkRegisterInfo()
                 return false ;}
 
         else if (isEmpty(txtUserConfirmPassword, 'กรุณายืนยันรหัสผ่าน')) {
-            check_callback();
+            //check_callback();
             //alert("txtuserpass");
             txtUserConfirmPassword.focus();
          // document.getElementById('txtUserPassword').style.backgroundColor ='yellow';
@@ -79,7 +87,10 @@ function checkRegisterInfo()
             }
        }
         else if(txtUserPostalCode.value != "" ){
-            if(zipCodeExpression.test(txtUserPostalCode.value)){
+            //alert("protal");
+            var gg = zipCodeExpression.test(txtUserPostalCode.value);
+            //alert(gg);
+            if(!zipCodeExpression.test(txtUserPostalCode.value)){
                 label_user_postal.style.display = 'block';
                 alert("กรุณาใส่รหัสไปรษณีย์ให้ถูกต้อง");
     	       return false;
@@ -98,7 +109,7 @@ function clear_lable(){
     label_user_email.style.display = 'none';
     label_user_phone.style.display = 'none';
     label_user_postal.style.display = 'none';
-    
+    //label_user_name2.style.display = 'none';
     txtUserName.style.background = 'white';
     txtUserPassword.style.background = 'white';
     txtConfirmPassword.style.background = 'white';

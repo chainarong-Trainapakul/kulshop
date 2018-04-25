@@ -3,19 +3,20 @@
 
 if(isset($_POST["item_name"]))
 {
+ require_once '../../library/config.php';
  $product_name = $_POST["item_name"];
  $product_id = $_POST["item_no"];
  $product_qty = $_POST["item_quantity"];
  $bill_no = $_POST['bill_no'];
  date_default_timezone_set("Asia/Bangkok");
  $current_date = date('Y-m-d H:i:s');
-    echo $bill_no ;
+    //echo $bill_no ;
    // echo $product_name[0];
-    echo $product_id[0];
-    echo $product_qty[0];
+   // echo $product_id[0];
+   // echo $product_qty[0];
  //$connect = new PDO("mysql:host=localhost;dbname=kaset3", "root", "password");
-    $dbConn = mysql_connect ('localhost', "root", "password") or die ('MySQL connect failed. ' . mysql_error());
-mysql_select_db("kaset3") or die('Cannot select database. ' . mysql_error());
+    $dbConn = mysql_connect ($dbHost, $dbUser,$dbPass) or die ('MySQL connect failed. ' . mysql_error());
+mysql_select_db($dbName) or die('Cannot select database. ' . mysql_error());
 mysql_query("SET NAMES UTF8");
  $order_id = uniqid();
     

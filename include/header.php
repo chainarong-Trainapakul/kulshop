@@ -1,4 +1,5 @@
-﻿<?php
+<?php
+//require_once(./admin/library/functions.php)
 if (!defined('WEB_ROOT')) {
 	exit;
 }

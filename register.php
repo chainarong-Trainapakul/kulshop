@@ -101,8 +101,8 @@ if(isset($_GET['error']) && $_GET['error'] != ''){
                 <label class="label label-default" style="font-size:0.9em;" id = 'label_user_name2' >* มีผู้ใช้ชื่อนี้แล้วกรุณาเปลี่ยนเป็นชื่ออื่น</label>
                 <script type="application/javascript"> 
                     //clear_lable();
-                    alert("gg");
-                    console.log("gg");
+                    //alert("gg");
+                    //console.log("gg");
                    /* document.getElementById('txtUserName').style.backgroundColor = 'yellow';
                     document.getElementById('txtUserPassword').style.backgroundColor = 'yellow';
                     document.getElementById('txtConfirmPassword').style.backgroundColor = 'yellow';*/
