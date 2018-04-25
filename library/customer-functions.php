@@ -1,6 +1,7 @@
 <?php
 require_once 'config.php';
 require_once 'database.php';
+
 //require_once './admin/library/functions.php';
 /*********************************************************
 *                 Customer FUNCTIONS 
@@ -85,7 +86,7 @@ function doCustomerLogin()
                  /*echo "<script type='text/javascript'>alert('$shoppingReturnUrl');</script>"; */
                 //header('Location: '.'admin/index.php');
                 $_SESSION['plaincart_user_id'] = $_SESSION['plaincart_customer_id'];
-                checkAdminUser();
+                //checkAdminUser();
                 header('Location: '.'admin/index.php');
             }
 		} else {

@@ -128,12 +128,14 @@ if(isset($_GET['error']) && $_GET['error'] != ''){
       <label class="label label-default" style="font-size:0.9em;" id = 'label_user_email'>* กรุณาใส่อีเมลให้ถูกต้อง เช่น  example@gmail.com</label></td>
   </tr>
     <tr> 
-   <td width="150" class="">ชื่อ</td>
-   <td class=""> <input name="txtUserFirstName" type="text" class="box" id="txtUserFirstName" size="32" maxlength="32" placeholder="กรุณาใส่ ขื่อ" value="<?php echo $tempFirstName; ?>"></td>
+   <td width="150" class="">ชื่อ<span class="label label-warning">ต้องการ</span></td>
+   <td class=""> <input name="txtUserFirstName" type="text" class="box" id="txtUserFirstName" size="32" maxlength="32" placeholder="กรุณาใส่ ขื่อ" value="<?php echo $tempFirstName; ?>">
+        <label class="label label-default" style="font-size:0.9em;" id = 'label_user_first'>* กรุณาระบุชื่อเป็นภาษาไทย หรือ ภาษาอังกฤษ</label></td>
   </tr>
   <tr> 
-   <td width="150" class="">นามสกุล</td>
-   <td class=""> <input name="txtUserLastName" type="text" class="box" id="txtUserLastName" size="32" maxlength="32" placeholder="กรุณาใส่ นามสกุล" value="<?php echo $tempLastName; ?>"></td>
+   <td width="150" class="">นามสกุล<span class="label label-warning">ต้องการ</span></td>
+   <td class=""> <input name="txtUserLastName" type="text" class="box" id="txtUserLastName" size="32" maxlength="32" placeholder="กรุณาใส่ นามสกุล" value="<?php echo $tempLastName; ?>">
+       <label class="label label-default" style="font-size:0.9em;" id = 'label_user_last'>* กรุณาระบุนามสกุลเป็นภาษาไทย หรือ ภาษาอังกฤษ</label></td>
   </tr>
   <tr> 
    <td width="150" class="">โทรศัพท์</td>
@@ -220,6 +222,26 @@ $(function(){
   		}
   	});
 });
-
+$(document).ready(function() {
+    $("#txtUserPhone").keydown(function (e) {
+        // Allow: backspace, delete, tab, escape, enter and .
+        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+             // Allow: Ctrl/cmd+A
+            (e.keyCode == 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+             // Allow: Ctrl/cmd+C
+            (e.keyCode == 67 && (e.ctrlKey === true || e.metaKey === true)) ||
+             // Allow: Ctrl/cmd+X
+            (e.keyCode == 88 && (e.ctrlKey === true || e.metaKey === true)) ||
+             // Allow: home, end, left, right
+            (e.keyCode >= 35 && e.keyCode <= 39)) {
+                 // let it happen, don't do anything
+                 return;
+        }
+        // Ensure that it is a number and stop the keypress
+        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+            e.preventDefault();
+        }
+    });
+});
 </script>
 <?php require_once 'include/footer.php'; ?>

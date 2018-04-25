@@ -136,7 +136,7 @@ if(isset($_SESSION['plaincart_success']) && $_SESSION['plaincart_success']!=null
   				</tr>
    				<tr> 
    					<td width="150" class="">โทรศัพท์</td>
-   					<td class=""> <input name="txtUserPhone" type="tel" class="box" id="txtUserPhone"  
+   					<td class=""> <input name="txtUserPhone" type="text" pattern="[0-9]" class="box" id="txtUserPhone"  
                     size="32" maxlength="10" value=""></td>
   				</tr>
   				<tr> 
@@ -222,7 +222,27 @@ else{
 
 
 <script>
-
+$(document).ready(function() {
+    $("#txtUserPhone").keydown(function (e) {
+        // Allow: backspace, delete, tab, escape, enter and .
+        if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+             // Allow: Ctrl/cmd+A
+            (e.keyCode == 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+             // Allow: Ctrl/cmd+C
+            (e.keyCode == 67 && (e.ctrlKey === true || e.metaKey === true)) ||
+             // Allow: Ctrl/cmd+X
+            (e.keyCode == 88 && (e.ctrlKey === true || e.metaKey === true)) ||
+             // Allow: home, end, left, right
+            (e.keyCode >= 35 && e.keyCode <= 39)) {
+                 // let it happen, don't do anything
+                 return;
+        }
+        // Ensure that it is a number and stop the keypress
+        if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+            e.preventDefault();
+        }
+    });
+});
 $(function(){
 	var n = true;
 	$.ajax({
