@@ -11,7 +11,7 @@ session_start();
 //$dbHost = 'stertorous-caution.000webhostapp.com:45989';
 $dbHost = 'localhost';
 $dbUser = 'root';
-$dbPass = '';
+$dbPass = 'password';
 $dbName = 'kaset3';
 
 // setting up the web root and server root for

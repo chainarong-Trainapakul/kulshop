@@ -55,15 +55,7 @@ echo $gg ;
       </table>
     <!--  <p> ชนิดสินค้า </p><p> รหัสสินค้า</p><p> ชื่อสินค้า</p><p>จำนวน</p>-->
     <table>
-            <td><p> ชนิดสินค้า </p><select input type="text" name="cat_id" id='cat_id'><option value="FUCK YOU 1" selected>FUCK YOU 1</option>
-                <option value="FUCK YOU 2" selected>FUCKYOU2</option>
-                <option value="FUCK YOU 3" selected>FUCKYOU3</option>
-                <option value="FUCK YOU 4" selected>FUCKYOU4</option>
-                <?php
-	               /*echo $categoryList;	*/	//แสดงประเภทสินค้าในแบบ Drop down list
-                /*echo $categoryList*/
-                ?>	 
-                </select></td>
+ 
                 <?php 
                     //echo $_POST['cat_id'] ;
                 ?>

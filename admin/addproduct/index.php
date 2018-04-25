@@ -19,7 +19,7 @@ switch ($view) {
 		break;
 
 	case 'modify' :
-		$content 	= 'modify.php';		
+		$content 	= 'list-Copy.php';		
 		$pageTitle 	= 'Shop Admin Control Panel - Modify Product';
 		break;
 
@@ -38,5 +38,6 @@ switch ($view) {
 
 $script    = array('product.js');
 
-require_once '../include/template.php';
+    require_once '../include/template.php';
 ?>
+
