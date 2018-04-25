@@ -7,6 +7,7 @@ function checkRegisterInfo()
     var format_phone = /(\b[0]{1}?\d{2}|\b[0]{1}?[2]{1})[-.]?(\d{3}[-.]?\d{4}\b|\d{3}[-.]?\d{3}\b)/;
     var zipCodeExpression = /\b[1-9]{1}?\d{3}[0]\b/;
 	with (window.document.frmAddUser) {
+        document.getElementById('label_user_name2').style.display = 'none';
           clear_lable();
     var format_password = /^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9]+$/i ;
     var format_phone = /(\b[0]{1}?\d{2}|\b[0]{1}?[2]{1})[-.]?(\d{3}[-.]?\d{4}\b|\d{3}[-.]?\d{3}\b)/;
@@ -14,7 +15,8 @@ function checkRegisterInfo()
 		if (isEmpty(txtUserName, 'กรุณากรอก userName')) {
 			txtUserName.focus();
             //alert("gg1");
-            label_user_name.style.display= 'block';
+          document.getElementById('txtUserName').style.background = "yellow";
+          document.getElementById('label_user_name').style.display= 'block';
             //alert("gg2");  document.getElementById('txtUserName').style.backgroundColor = 'yellow';
            // window.location.href = 'kulshop/register.php';
             //alert("gg3");
@@ -35,7 +37,7 @@ function checkRegisterInfo()
         }*/
         else if (isEmpty(txtUserPassword, 'กรุณากรอกรหัสผ่าน')) {
 			txtUserPassword.focus(); 
-            label_user_password.style.display = 'block';  document.getElementById('txtUserPassword').style.backgroundColor ='yellow';
+            document.getElementById('label_user_password').style.display = 'block';  document.getElementById('txtUserPassword').style.backgroundColor ='yellow';
 			return false;
             
 		}
@@ -86,7 +88,7 @@ function checkRegisterInfo()
                 return false ;
             }
        }
-        else if(txtUserPostalCode.value != "" ){
+        else if(txtUserPostalCode.value != ""){
             //alert("protal");
             var gg = zipCodeExpression.test(txtUserPostalCode.value);
             //alert(gg);
@@ -103,13 +105,13 @@ function checkRegisterInfo()
  
 	}
 function clear_lable(){
-    label_user_name.style.display= 'none';
-    label_user_password.style.display = 'none';
-    label_user_con_password.style.display = 'none';
-    label_user_email.style.display = 'none';
-    label_user_phone.style.display = 'none';
-    label_user_postal.style.display = 'none';
-    //label_user_name2.style.display = 'none';
+    document.getElementById('label_user_name').style.display= 'none';
+    document.getElementById('label_user_password').style.display = 'none';
+    document.getElementById('label_user_con_password').style.display = 'none';
+    document.getElementById('label_user_email').style.display = 'none';
+    document.getElementById('label_user_phone').style.display = 'none';
+    document.getElementById('label_user_postal').style.display = 'none';
+    //document.getElementById('label_user_name2').style.display = 'none';
     txtUserName.style.background = 'white';
     txtUserPassword.style.background = 'white';
     txtConfirmPassword.style.background = 'white';
@@ -182,7 +184,7 @@ function check_call(){
     }
 }
 function hightlight(){
-     document.getElementById('txtUserName').style.backgroundColor = 'yellow';
+    console.log('hightlight'); document.getElementById('txtUserName').style.backgroundColor = 'yellow';
      document.getElementById('txtUserPassword').style.backgroundColor = 'yellow';
      document.getElementById('txtConfirmPassword').style.backgroundColor = 'yellow';
      txtUserName.focus();

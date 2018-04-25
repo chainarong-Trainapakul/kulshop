@@ -97,15 +97,9 @@ if(isset($_GET['error']) && $_GET['error'] != ''){
    <td width="200" class="">ชื่อผู้ใช้ <span class="label label-warning">ต้องการ</span></td>
    <td class=""> <input name="txtUserName" type="text" class="box" id="txtUserName" size="32" maxlength="32" placeholder = 'กรุณาใส่ชื่อผู้ใช้ <a-z,0-9>' value="<?php echo $tempName; ?>">
        <?php 
-            if($hightlight==true){?>
-                <label class="label label-default" style="font-size:0.9em;" id = 'label_user_name2' >* มีผู้ใช้ชื่อนี้แล้วกรุณาเปลี่ยนเป็นชื่ออื่น</label>
+            if($hightlight==true){ $hightlight=false; ?>
+                <br><label class="label label-default" style="font-size:0.9em;" id = 'label_user_name2' >* มีผู้ใช้ชื่อนี้แล้วกรุณาเปลี่ยนเป็นชื่ออื่น</label>
                 <script type="application/javascript"> 
-                    //clear_lable();
-                    //alert("gg");
-                    //console.log("gg");
-                   /* document.getElementById('txtUserName').style.backgroundColor = 'yellow';
-                    document.getElementById('txtUserPassword').style.backgroundColor = 'yellow';
-                    document.getElementById('txtConfirmPassword').style.backgroundColor = 'yellow';*/
                     hightlight();
                 </script> 
        <?php        
