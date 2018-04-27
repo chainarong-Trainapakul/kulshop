@@ -36,8 +36,8 @@ if(isset($_POST['txtUserPrice'])){
 				'Reply-To: '.$email."\r\n" .
 				'X-Mailer: PHP/' . phpversion();
 		@mail($shopEmail, $subject, $stringMail, $headers); 
-        
-        
+        date_default_timezone_set("Asia/Bangkok");
+        $current_date = date('Y-m-d H:i:s');
         $sql = "Insert into tbl_payment(od_id,
         od_shipping_first_name,
         od_payment_phone,
@@ -50,7 +50,7 @@ if(isset($_POST['txtUserPrice'])){
         '$phone',
         '$email',
         '$bank','
-        $time',
+        $current_date',
         '$amount')";
         dbQuery($sql);
         setSuccess("แจ้งชำระเงินเสร็จสิ้น ขอบคุณที่ใช้บริการ");
@@ -130,7 +130,7 @@ if(isset($_SESSION['plaincart_success']) && $_SESSION['plaincart_success']!=null
                             
                             		<table align="center" cellpadding="0" cellspacing="1" class="table table-bordered table-striped table-hover">
 
-  				<tr> 
+  				<!--<tr> 
    					<td width="200" class="">ชื่อ <span class="label label-warning">ต้องการ</span></td>
    					<td class=""> <input name="txtUserFirstName" type="text" class="box" id="txtUserFirstName" size="32" maxlength="32"></td>
   				</tr>
@@ -143,7 +143,7 @@ if(isset($_SESSION['plaincart_success']) && $_SESSION['plaincart_success']!=null
    					<td width="150" class="">อีเมล <span class="label label-warning">ต้องการ</span></td>
    					<td class=""> <input name="txtUserEmail" type="email" class="box" id="txtUserEmail"	 
                     size="32" maxlength="32" value=""></td>
-  				</tr>
+  				</tr>-->
   				
                   <tr>
            <td width="150" class="">โอนไปยังบัญชีธนาคาร <span class="label label-warning">ต้องการ</span></td>
@@ -156,10 +156,10 @@ if(isset($_SESSION['plaincart_success']) && $_SESSION['plaincart_success']!=null
 	        <td class="style23">&nbsp;</td>
 	        </tr>
                 
-  				<tr> 
+  				<!--<tr> 
    					<td width="150" class="">เวลาที่โอน </td>
    					<td class=""> <input name="txtUserTransfer" type="date" class="box" id="txtUserTransfer" size="32" maxlength="32"></td>
-  				</tr>
+  				</tr>-->
                 <tr> 
    					<td width="150" class="">เลขที่บิล <span class="label label-warning">ต้องการ</span></td>
    					<td class=""> <input name="txtUserOrderNo" type="text" class="box" id="txtUserOrderNo" size="32" maxlength="32" onKeyUp="checkNumber(this);"></td>

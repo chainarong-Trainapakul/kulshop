@@ -2,9 +2,11 @@
     date_default_timezone_set("Asia/Bangkok");
     $current_date = date('Y-m-d');
 ?>
+<script src ="jquery-edge.js"> </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <html>
 <body>
   <div class="container">
@@ -27,6 +29,7 @@
      </table>
      <div align="center">
       <input type="submit" name="submit" class="btn btn-info" value="ตกลง" />
+    
      </div>
     </div>
    </form>
@@ -40,10 +43,9 @@ $(document).ready(function(){
  $(document).on('click', '.add', function(){
   var html = '';
   html += '<tr>';
-  html += '<td><input type="number" name="item_no[]" class="form-control item_no" /></td>';
-  html += '<td><input type="text" name="item_name[]" class="form-control item_name" /></td>';
-  html += '<td><input type="number" name="item_quantity[]" class="form-control item_quantity" /></td>';
-  //html += '<td><select name="item_unit[]" class="form-control item_unit"><option value="">Select Unit</option><?php /*echo fill_unit_select_box($connect); */?></select></td>';
+  html += '<td><input type="number" name="item_no[]" placeholder="เลขที่สินค้า" class="form-control item_no" /></td>';
+  html += '<td><input type="text" name="item_name[]" placeholder="ชื่อสินค้า" class="form-control item_name" /></td>';
+  html += '<td><input type="number" name="item_quantity[]" placeholder="จำนวน" class="form-control item_quantity" /></td>';
   html += '<td><button type="button" name="remove" class="btn btn-danger btn-sm remove"><span class="glyphicon glyphicon-minus"></span></button></td></tr>';
   $('#item_table').append(html);
  });
@@ -69,7 +71,7 @@ $(document).ready(function(){
       var count = 1;
    if($(this).val() == '')
    {
-      error += "<p>กรุณากรอกเลขที่บิลให้ถูกต้อง</p>";
+      error += "<p>กรุณากรอก 'เลขที่บิล' ให้ถูกต้อง</p>";
     return false;
     }
   });
@@ -77,7 +79,7 @@ $(document).ready(function(){
    var count = 1;
    if($(this).val() == '')
    {
-    error += "<p>กรุณากรอกข้อมูลในช่องเลขทีสินค้า แถวที่"+count+"</p>";
+    error += "<p>กรุณากรอกข้อมูลในช่อง 'เลขทีสินค้า' แถวที่"+count+"</p>";
     return false;
    }
    count = count + 1;
@@ -86,12 +88,20 @@ $(document).ready(function(){
    var count = 1;
    if($(this).val() == '')
    {
-    error += "<p>กรุณากรอกข้อมูลในช่องจำนวน แถวที่"+count+"</p>";
+    error += "<p>กรุณากรอกข้อมูลในช่อง 'จำนวน' แถวที่"+count+"</p>";
     return false;
    }
    count = count + 1;
   });
- 
+  $('.item_name').each(function(){
+   var count = 1;
+   if($(this).val() == 'เลขที่สินค้านี้ ไม่มีรายการ')
+   {
+    error += "<p>กรุณากรอกข้อมูลในช่อง 'เลขที่สินค้า' ให้ถูกต้อง แถวที่"+count+"</p>";
+    return false;
+   }
+   count = count + 1;
+  });
      
   var form_data = $(this).serialize();
   console.log(form_data);
@@ -119,6 +129,39 @@ $(document).ready(function(){
    $('#error').html('<div class="alert alert-danger">'+error+'</div>');
   }
  });
- 
+   $('#item_table').on('focusout','input[name^="item_no"]',function(){
+           var index =  $('input[name^="item_no"]').length-1;
+           var pd_id = $(this).val();   
+             $.ajax({
+                url:"query_product.php",
+                method:"POST",
+                data:{data:pd_id},
+                 success:function(data)
+                {   if (data != 'no_query'){ 
+                        for(var i = 0 ; i < index+1 ; i ++){
+                            if(pd_id == $('input[name^="item_no"]').eq(i).val() ){
+                                $('input[name^="item_name"]').eq(i).val(data);
+                                $('input[name^="item_name"]').eq(i).attr("disabled", true).css("color","#006400");
+                                
+                                
+                            }
+                        }                  
+                    }
+                    else{
+                        for(var i = 0 ; i < index+1 ; i ++){
+                            if(pd_id == $('input[name^="item_no"]').eq(i).val() ){
+                                $('input[name^="item_name"]').eq(i).val("เลขที่สินค้านี้ ไม่มีรายการ");
+                                $('input[name^="item_name"]').eq(i).attr("disabled", true).css("color","#DC143C");
+                            }
+                        }    
+                    
+                    }
+                }
+              });
+       
+    });
+    
 });
+   
+
 </script>

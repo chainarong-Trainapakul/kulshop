@@ -4,7 +4,7 @@ if (!defined('WEB_ROOT')) {
 }
 
 $self = WEB_ROOT . 'admin/index.php';
-require_once '././library/functions.php';
+//require_once '././library/functions.php';
 ?>
 <!doctype html>
 <html>

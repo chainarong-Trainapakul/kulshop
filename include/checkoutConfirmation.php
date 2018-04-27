@@ -21,6 +21,7 @@ if (!checkRequiredPost($requiredField)) {
 $cartContent = getCartContent();	//ดึงข้อมูลจากตะกร้าสินค้ามาเก็บเข้าตัวแปร $cartContent
 
 ?>
+
 <table width="100%" border="0" align="center" cellpadding="10" cellspacing="0">
     <tr> 
         <td><h3>ขั้นตอนที่ 2 จาก 3 : ยืนยันการสั่งสินค้า</h3></td>
@@ -217,23 +218,33 @@ for ($i = 0; $i < $numItem; $i++) {
         <input name="btnBack" type="button" id="btnBack" value="&lt;&lt; แก้ไขข้อมูลผู้สั่ง/ผู้รับสินค้า" onClick="window.location.href='checkout.php?step=1';" class="btn btn-primary">
         &nbsp;&nbsp; 
       
-       <button class="btn btn-info" onClick="window.print()"> พิมพ์ใบเสร็จ </button>
+       <!--<button class="btn btn-info" onClick="printDiv('receipt');"> พิมพ์ใบเสร็จ </button>-->
+     <!--  <input name="btnConfirm1" type="button" onClick="printDiv('receipt');" value="ff &gt;&gt;" class="btn btn-primary"> -->    
        <input name="btnConfirm" type="submit" id="btnConfirm" value="ยืนยันการสั่งสินค้า &gt;&gt;" class="btn btn-primary">
    		</div>
    </div>
 </div>
 
 </form>
+    <style type="text/css">
 
+    #printable { display: none; }
+
+    @media print
+    {
+        #non-printable { display: none; }
+        #printable { display: block; }
+    }
+    </style>
 <script>
     function printDiv(divName) {
      var printContents = document.getElementById(divName).innerHTML;
+     console.log(printContents);
      var originalContents = document.body.innerHTML;
-
      document.body.innerHTML = printContents;
+     window.print();    
+     document.body.innerHTML = originalContents;
+    }
+</script>
 
-     window.print();
-
-     document.body.innerHTML = originalContents;</script>
-}
 <p>&nbsp;</p>
