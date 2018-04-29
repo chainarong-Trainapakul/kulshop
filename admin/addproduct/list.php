@@ -53,10 +53,11 @@ $categoryList = buildCategoryOptions($catId);
 <br>
  <table width="100%" border="0" align="center" cellpadding="2" cellspacing="1" class="text">
   <tr align="center" id="listTableHeader"> 
+   <td>รหัสสินค้า</td>  
    <td>ชื่อสินค้า</td>
    <td width="75">รูปสินค้า</td>
    <td width="75">ประเภทสินค้า</td>
-   <td width="70">แก้ไข</td>
+   
    <td width="70">ลบ</td>
   </tr>
   <?php
@@ -85,10 +86,11 @@ if (dbNumRows($result) > 0) {
 		$i += 1;
 ?>
   <tr class="<?php echo $class; ?>"> 
+    <td><a href="index.php?view=detail&productId=<?php echo $pd_id; ?>"><?php echo $pd_id; ?></a></td>  
    <td><a href="index.php?view=detail&productId=<?php echo $pd_id; ?>"><?php echo $pd_name; ?></a></td>
    <td width="75" align="center"><img src="<?php echo $pd_thumbnail; ?>" width="50" height ="50"></td>
    <td width="75" align="center"><a href="?catId=<?php echo $cat_id; ?>"><?php echo $cat_name; ?></a></td>
-   <td width="70" align="center"><a href="javascript:modifyProduct(<?php echo $pd_id; ?>);">แก้ไข</a></td>
+   
    <td width="70" align="center"><a href="javascript:deleteProduct(<?php echo $pd_id; ?>, <?php echo $catId; ?>);">ลบ</a></td>
   </tr>
   <?php

@@ -18,10 +18,10 @@ switch ($view) {
 		$pageTitle 	= 'Shop Admin Control Panel - Add Product';
 		break;
 
-	case 'modify' :
-		$content 	= 'list-Copy.php';		
-		$pageTitle 	= 'Shop Admin Control Panel - Modify Product';
-		break;
+	//case 'modify' :
+	//	$content 	= 'list-Copy.php';		
+	//	$pageTitle 	= 'Shop Admin Control Panel - Modify Product';
+	//	break;
 
 	case 'detail' :
 		$content    = 'detail.php';
