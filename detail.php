@@ -108,7 +108,7 @@ while($row = mysql_fetch_array($result)) {
     $od_id = $row['od_id'];
             ?>
                 <tr>
-                    <td><a href="order_item.php?od_id=<?php echo $od_id?>"><?php echo  $row['od_id']; ?></a></td>
+                    <td><a href="order_item2.php?od_id=<?php echo $od_id?>"><?php echo  $row['od_id']; ?></a></td>
                    <!-- <td><a href="detail.php?view=detailPar&oid=<?php /*echo $row['od_id'];*/ ?>"><?php/* echo  $row['od_id'];*/ ?></a></td>-->
                     <td><?php echo $row['od_shipping_first_name'];  echo " " . $row['od_shipping_last_name']; ?></td>
                     <td><?php echo $row['od_amount']; ?></td>

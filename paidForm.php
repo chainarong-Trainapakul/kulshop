@@ -11,7 +11,8 @@ $customerStringMail = '';
 if(isset($_POST['txtUserPrice'])){
 
 /*	if(md5($_POST['captcha']) == $_SESSION['captchaKey']){*/
-
+        $image = $_FILES['pic']['name'] ;
+        $path = 'image_upload_user/' . basename($image);
 		$name = (isset($_POST['txtUserFirstName']))?$_POST['txtUserFirstName']:'';
 
 		$phone = (isset($_POST['txtUserPhone']))?$_POST['txtUserPhone']:'';
@@ -21,7 +22,8 @@ if(isset($_POST['txtUserPrice'])){
 		$amount = (isset($_POST['txtUserPrice']))?$_POST['txtUserPrice']:'';
 	    $order_no = (isset($_POST['txtUserOrderNo']))?
         $_POST['txtUserOrderNo']:'';
-	
+	    $upload_pic = (isset($_FILES['pic']['name']))?
+        $_FILES['pic']['name']:'';
 		$shopEmail  = $shopConfig['email'];
 
 		$subject = '<h3>ลูกค้าโอนเงิน</h3>';
@@ -44,15 +46,24 @@ if(isset($_POST['txtUserPrice'])){
         od_payment_email,
         od_bank,
         od_date,
-        od_amount) 
+        od_amount,
+        upload_pic) 
         values('$order_no',
         '$name',
         '$phone',
         '$email',
         '$bank','
         $current_date',
-        '$amount')";
+        '$amount',
+        '$upload_pic')
+        ";
         dbQuery($sql);
+        if(move_uploaded_file($_FILES['pic']['tmp_name'] , "image_upload_user/gg.jpg")){
+            echo "gg";
+        }
+        else{
+            echo $path;
+        }
         setSuccess("แจ้งชำระเงินเสร็จสิ้น ขอบคุณที่ใช้บริการ");
 
 /* 	}else {
@@ -153,7 +164,7 @@ if(isset($_SESSION['plaincart_success']) && $_SESSION['plaincart_success']!=null
               <option value="ธนาคารกรุงไทย 115-3-40984-4">ธนาคารกรุงไทย 115-3-40984-4</option>
               <option value="ธนาคารกรุงเทพ 371-3-00653-8" >ธนาคารกรุงเทพ 371-3-00653-8</option>
 	          </select></td>
-	        <td class="style23">&nbsp;</td>
+	        
 	        </tr>
                 
   				<!--<tr> 
@@ -168,6 +179,13 @@ if(isset($_SESSION['plaincart_success']) && $_SESSION['plaincart_success']!=null
    					<td width="150" class="">จำนวนเงิน <span class="label label-warning">ต้องการ</span></td>
    					<td class=""> <input name="txtUserPrice" type="text" class="box" id="txtUserPrice" size="32" maxlength="32" onKeyUp="checkNumber(this);"></td>
   				</tr>
+                <tr>
+                      <td width="150" class="">อัพโหลดใบเสร็จ <span class="label label-warning">ต้องการ</span></td>
+   					<td class=""> <input type="file" name="pic" accept=image/*></td>                          
+                                        
+                                        
+                                        
+                </tr>
                   
                              <!--  <tr>
                     

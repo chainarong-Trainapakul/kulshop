@@ -15,7 +15,7 @@
    <h4 align="center">กรุณากรอก</h4>
    <br />
      <form method="post" id="insert_form"> 
-      <p>เลขที่บิล  <input type='number' name = 'bill_no' class="bill_no" size = "10">  วันที่  <?php echo $current_date?> </p>
+      <p>เลขที่บิล  <input type='number' name = 'bill_no' id = 'bill_no' class="bill_no" size = "10">  วันที่  <?php echo $current_date?> </p>
    <!--<form method="post" id="insert_form">-->
     <div class="table-repsonsive">
      <span id="error"></span>
@@ -117,6 +117,7 @@ $(document).ready(function(){
      {
       //alert ("เพิ่มสินค้าเรียบร้อย");
       $('#item_table').find("tr:gt(0)").remove();
+      $('#bill_no').val('');
       $('#error').html('<div class="alert alert-success">เพิ่มสิ้นค้าเรียบร้อย</div>');
       
      }
@@ -137,7 +138,12 @@ $(document).ready(function(){
                 method:"POST",
                 data:{data:pd_id},
                  success:function(data)
-                {   if (data != 'no_query'){ 
+                {   
+                    console.log("data"+data);
+                    if(data == 'gg'){
+                        console.log("fucnk you");   
+                    }
+                    if (data != 'no_query'){ 
                         for(var i = 0 ; i < index+1 ; i ++){
                             if(pd_id == $('input[name^="item_no"]').eq(i).val() ){
                                 $('input[name^="item_name"]').eq(i).val(data);
@@ -148,6 +154,7 @@ $(document).ready(function(){
                         }                  
                     }
                     else{
+                        //alert(data);
                         for(var i = 0 ; i < index+1 ; i ++){
                             if(pd_id == $('input[name^="item_no"]').eq(i).val() ){
                                 $('input[name^="item_name"]').eq(i).val("เลขที่สินค้านี้ ไม่มีรายการ");
@@ -156,10 +163,18 @@ $(document).ready(function(){
                         }    
                     
                     }
+                },
+                error:function(data,data1,data2){
+                    console.log("err gg");
                 }
               });
        
     });
+    $(document).ajaxError(function(){
+       // alert("เลขที่บิลนี้ใช้ไปแล้ว");
+         $('#error').html('<div class="alert alert-danger">เลขที่บิลนี้ถูกใช้ไปแล้ว</div>');
+        
+});
     
 });
    
