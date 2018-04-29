@@ -4,12 +4,13 @@ require_once 'config.php';
 /*********************************************************
 *                 CHECKOUT FUNCTIONS 
 *********************************************************/
-function saveOrder($tran)
-{   
+function saveOrder($total)
+{   require_once "./process_total.php";
+    $total = $subTotal + $total ;
     $user_id = $_SESSION['plaincart_customer_id'];
 	$orderId       = 0;		//ในตอนแรกรหัสใบสั่งสินค้าจะเป็น 0 
 	$shopConfig = getShopConfig();
-	$shippingCost  = $tran;
+	//$shippingCost  = $tran;
 
 	//กำหนด array() ขึ้นมา เพื่อเก็บข้อมูลของการผู้ชื้อและผู้รับสินค้า
 	$requiredField = array('hidShippingFirstName', 'hidShippingLastName', 'hidShippingEmail', 'hidShippingAddress1', 'hidShippingCity', 'hidShippingPostalCode',
@@ -44,11 +45,13 @@ function saveOrder($tran)
 		$sql = "INSERT INTO tbl_order(od_date,od_exp_date,user_id, od_last_update, od_shipping_first_name, od_shipping_last_name, od_shipping_email, od_shipping_address1, 
 		                              od_shipping_address2, od_shipping_phone, od_shipping_state, od_shipping_city, od_shipping_postal_code, od_shipping_cost,
                                       od_payment_first_name, od_payment_last_name, od_payment_email, od_payment_address1, od_payment_address2, 
-									  od_payment_phone, od_payment_state, od_payment_city, od_payment_postal_code)
+									  od_payment_phone, od_payment_state, od_payment_city, od_payment_postal_code,
+                                      od_total)
                 VALUES (NOW(),'$expdate','$user_id' ,NOW(), '$hidShippingFirstName', '$hidShippingLastName', '$hidShippingEmail', '$hidShippingAddress1', 
 				        '$hidShippingAddress2', '$hidShippingPhone', '$hidShippingState', '$hidShippingCity', '$hidShippingPostalCode', '$shippingCost',
 						'$hidPaymentFirstName', '$hidPaymentLastName', '$hidPaymentEmail', '$hidPaymentAddress1', 
-						'$hidPaymentAddress2', '$hidPaymentPhone', '$hidPaymentState', '$hidPaymentCity', '$hidPaymentPostalCode')";
+						'$hidPaymentAddress2', '$hidPaymentPhone', '$hidPaymentState', '$hidPaymentCity', '$hidPaymentPostalCode',
+                        '$total')";
 		$result = dbQuery($sql);
 		
 		//ดึงรหัสใบสั่งซื้อออกมา (ในที่นี้คือ ฟิลด์ od_id)

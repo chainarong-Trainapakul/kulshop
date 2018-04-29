@@ -56,12 +56,13 @@ $categoryList = buildCategoryOptions($catId);
  <table width="100%" border="0" align="center" cellpadding="2" cellspacing="1" class="text">
   <tr align="center" id="listTableHeader"> 
    <td width="70">เลขที่บิล</td>
-   <td width="125">ชื่อ</td>
+   <!--<td width="125">ชื่อ</td>
    <td width="75">เบอร์โทรศัพท์</td>
-   <td width="70">Email</td>
+   <td width="70">Email</td>-->
    <td width="70">โอนเงินมาที่</td>
-   <td width="70">วันที่โอน</td>
-   <td width="70">โอนมาที่</td>
+   <td width="70">วันที่แจ้งชำระ</td>
+   <td width="70">จำนวนงิน</td>
+      <td width="70">บิล</td>
   </tr>
   <?php
 if (dbNumRows($result) > 0) {
@@ -70,6 +71,7 @@ while ($row = mysql_fetch_assoc($result)) {
 /*    echo $row["userid"];
     echo $row["fullname"];
     echo $row["userstatus"];*/
+    $receipt = $row["upload_pic"];
     if ($i%2) {
 			$class = 'row1';
 		} else {
@@ -81,12 +83,16 @@ while ($row = mysql_fetch_assoc($result)) {
     ?>
     <tr class="<?php echo $class; ?>"> 
         <td><a href="../order/index.php?view=detail&oid=<?php echo $row['od_id']; ?>"><?php echo $row['od_id'];?></a></td>
-        <td><?php echo $row['od_shipping_first_name'];?></td>
-        <td><?php echo $row['od_payment_phone'];?></td>
-        <td><?php echo $row['od_payment_email'];?></td>
+        <!--<td><?php /*echo $row['od_shipping_first_name'];*/?></td>
+        <td><?php /*echo $row['od_payment_phone'];*/?></td>
+        <td><?php /*echo $row['od_payment_email'];*/?></td>-->
         <td><?php echo $row['od_bank'];?></td>
         <td><?php echo $row['od_date'];?></td>
         <td><?php echo $row['od_amount'];?></td>
+<!--        <image src="../../image_upload_user/upload_5ae5d65a81351.JPG" width = '100' height = '100'>-->
+       <td> <?php
+    echo '<a href="../../'.$receipt.'"><img src="../../'.$receipt.'" width="100" height="100" /></a>' ?></td>
+
     </tr>    
 
 

@@ -9,10 +9,11 @@ $catId  = (isset($_GET['c']) && $_GET['c'] != '1') ? $_GET['c'] : 0;
 $customerStringMail = '';
 
 if(isset($_POST['txtUserPrice'])){
-
+        $type = $_FILES["pic"]["type"];
 /*	if(md5($_POST['captcha']) == $_SESSION['captchaKey']){*/
-        $image = $_FILES['pic']['name'] ;
+        $image = "upload_".uniqid().".JPG";
         $path = 'image_upload_user/' . basename($image);
+       // $path = iconv("utf-8", "cp936", $path);
 		$name = (isset($_POST['txtUserFirstName']))?$_POST['txtUserFirstName']:'';
 
 		$phone = (isset($_POST['txtUserPhone']))?$_POST['txtUserPhone']:'';
@@ -55,14 +56,27 @@ if(isset($_POST['txtUserPrice'])){
         '$bank','
         $current_date',
         '$amount',
-        '$upload_pic')
+        '$path')
         ";
         dbQuery($sql);
-        if(move_uploaded_file($_FILES['pic']['tmp_name'] , "image_upload_user/gg.jpg")){
-            echo "gg";
+        $name_up =$_FILES["pic"]["name"];
+        $type = $_FILES["pic"]["type"];
+        $size = $_FILES["pic"]["size"];
+        $temp =  $_FILES["pic"]["tmp_name"];
+        $error =  $_FILES["pic"]["error"];
+        if(move_uploaded_file($_FILES['pic']['tmp_name'] , $path)){
+            //echo $path;
+            //echo $type;
         }
+
         else{
-            echo $path;
+            //echo $path;
+            //echo $name_up."\n";
+            // echo $type."\n";
+             //echo $size."\n";
+             echo $temp."\n";
+             //echo $error."\n";
+            
         }
         setSuccess("แจ้งชำระเงินเสร็จสิ้น ขอบคุณที่ใช้บริการ");
 
@@ -272,7 +286,12 @@ $(function(){
   		}
   	});
 });
-
+$('#txtUserOrderNo').on('focusout',function(){
+    console.log("gg");
+    $.ajax({
+        url = "query_order_"
+    })
+});
 </script>
 
 <?php

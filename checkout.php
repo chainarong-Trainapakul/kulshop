@@ -8,6 +8,7 @@ require_once 'process_qty.php';
 if (isset($_SESSION['plaincart_customer_id'])){
 
 }
+
 else{
    echo "<script type='text/javascript'>alert('กรุณาเข้าสู่ระบบ');</script>"; 
    // header('Location: ' . $_SERVER['HTTP_REFERER']);
@@ -30,6 +31,8 @@ if (isCartEmpty()) {
 		$includeFile = 'checkoutConfirmation.php';
 		$pageTitle   = 'Checkout - Step 2 of 2';
 	} else if ($step == 3) {	//หรือเป็นขั้นตอนที่ 3
+       /*$subTotal = $_POST['total'];*/
+       // $total = $tran +$subTotal ;
 		$orderId     = saveOrder($tran);
 		$orderAmount = getOrderAmount($orderId);
 		

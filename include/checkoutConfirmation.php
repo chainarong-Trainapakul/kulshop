@@ -1,6 +1,8 @@
 <?php
 //ตรวจสอบว่ามาจาก step=1 และต้องแน่ใจว่าไม่มีการเข้ามายังหน้านี้โดยตรง
+$subTotal = 0 ;
 require_once './process_qty.php';
+
 if (!defined('WEB_ROOT')
     || !isset($_GET['step']) || (int)$_GET['step'] != 2
 	|| $_SERVER['HTTP_REFERER'] != 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] . '?step=1') {
@@ -28,7 +30,7 @@ $cartContent = getCartContent();	//ดึงข้อมูลจากตะก
     </tr>
 </table>
 <div id="errorMessage" alert alert-danger><?php echo $errorMessage; ?></div>
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>?step=3" method="post" name="frmCheckout" id="frmCheckout">
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>?step=3?total =<?php echo $subTotal?>" method="post" name="frmCheckout" id="frmCheckout">
 <?php 
 if ($_POST['optPayment'] == 'paypal') {
 ?>
