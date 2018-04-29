@@ -55,13 +55,13 @@ switch ($view) {
 <div class="table-responsive">
 <table class="table table-bordered table-hover" border="1" style="width:60%" >
   <tr class="info">
-    <td>Order #</td>
-    <td>Customer Name</td> 
-    <td>Amount</td>
-    <td>Order Time</td>
-    <td>Expire date</td>
-    <td>Status</td>
-    <td>Parcel #</td>  
+    <td>รหัสใบสั่งซื้อ</td>
+    <td>ชื่อลูกค้า</td> 
+    <td>รวมสุทธิ</td>
+    <td>วันที่สั่งซื้อ</td>
+    <td>วันที่สิ้นสุดคำสั่งซื้อ</td>
+    <td>สถานะ</td>
+    <td>เลขพัสดุ</td>  
     
   </tr>
 <?php

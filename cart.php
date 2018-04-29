@@ -96,6 +96,7 @@ if(isset($_SESSION['plaincart_error']) && $_SESSION['plaincart_error'] != null){
 
   <tr class="active"> 
    <td width="50%" colspan="2" align="center">รายการ</td>
+    <td width="50%" align="left">สินค้าในคลัง</td>
    <td width="15%" align="right">ราคา</td>
    <td width="15%" align="center">จำนวน</td>
    <td width="15%"align="right">รวม</td>
@@ -110,11 +111,14 @@ for ($i = 0; $i < $numItem; $i++) {
 ?>
  <tr class="content"> 
   <td align="center">
+      
   	<span class="hidden-cat-product" id="productmini-<?php $cat_id; ?>" hidden></span>
  	<a href="#" id="product-<?php echo $pd_id; ?>" class="show-detail-product">
+       
  	<img class="hidden-xs hidden-sm img-rounded" src="<?php echo $pd_thumbnail; ?>"weight="100" height="100" border="0"></a></td>
   <td><a href="#" id="product-<?php echo $pd_id; ?>" class="show-detail-product"><?php echo $pd_name; ?></a></td>
-   <td align="right"><?php echo displayAmount($pd_price); ?></td>
+    <td><a href="#" class="show-detail-product"><?php echo $pd_qty; ?>  ชิ้น</a></td>
+    <td align="right"><?php echo displayAmount($pd_price); ?></td>
   <td><input name="txtQty[]" type="text" id="txtQty[]" size="5" value="<?php echo $ct_qty; ?>" class="box" onKeyUp="checkNumber(this);">
   <input name="hidCartId[]" type="hidden" value="<?php echo $ct_id; ?>">
   <input name="hidProductId[]" type="hidden" value="<?php echo $pd_id; ?>">

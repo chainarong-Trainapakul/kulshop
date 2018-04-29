@@ -113,14 +113,14 @@ if(isset($_SESSION['plaincart_success']) && $_SESSION['plaincart_success']!=null
                 </tr>
               <tr>
                 <td width="138" height="30"><span class="style_b18">โทร.081-9177716 </span></td>
-                <td width="259" height="30"><span class="style_b18">kulthidakukps@gmail.com</span></td>
+                <td width="259" height="30"><span class="style_b18">chaiyasitkaset@gmail.com</span></td>
               </tr>
               <tr>
-                <td height="30" class="style_b18"><span class="style28"><img src="images/line.png" width="164" height="149" /></span></td>
-                <td height="30" class="style28"><span class="style_b18"> id line : kulkul26</span></td>
+                <td height="30" class="style_b18"><span class="style28"><img src="images/line.jpg" width="164" height="149" /></span></td>
+                <td height="30" class="style28"><span class="style_b18"> LINE ID : chaiyasitkaset</span></td>
               </tr>
               <tr>
-                <td height="30" colspan="2" class="style_b18">เพจเฟสบุ๊ค <a href="https://www.facebook.com/KangchemTH/">https://www.facebook.com/KangchemTH/</a></td>
+                <td height="30" colspan="2" class="style_b18">เพจเฟสบุ๊ค <a href="https://www.facebook.com/Chaiyasitkaset/">https://www.facebook.com/Chaiyasitkaset/</a></td>
                 </tr>
             </table>
             <td align="center"><input type="button" name="b2" id="b2" value="กลับหน้าหลัก" onclick="parent.location='index.php'"/>&nbsp;</td>
