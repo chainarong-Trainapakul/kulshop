@@ -87,7 +87,7 @@ $sql = "SELECT o.od_id, o.od_shipping_first_name, od_shipping_last_name, od_date
 		ORDER BY od_id DESC;";
     
 $user_id = $_SESSION['plaincart_customer_id'];   
-$sql = "SELECT o.od_exp_date,o.od_id, o.od_shipping_first_name,od_parcelno, od_shipping_last_name, od_date, od_status, SUM(pd_price * od_qty) + od_shipping_cost AS od_amount 
+$sql = "SELECT o.od_exp_date,o.od_id,o.od_total, o.od_shipping_first_name,od_parcelno, od_shipping_last_name, od_date, od_status, SUM(pd_price * od_qty) + od_shipping_cost AS od_amount 
 FROM tbl_order o,
 tbl_order_item oi,
 tbl_product p 
@@ -111,7 +111,7 @@ while($row = mysql_fetch_array($result)) {
                     <td><a href="order_item2.php?od_id=<?php echo $od_id?>"><?php echo  $row['od_id']; ?></a></td>
                    <!-- <td><a href="detail.php?view=detailPar&oid=<?php /*echo $row['od_id'];*/ ?>"><?php/* echo  $row['od_id'];*/ ?></a></td>-->
                     <td><?php echo $row['od_shipping_first_name'];  echo " " . $row['od_shipping_last_name']; ?></td>
-                    <td><?php echo $row['od_amount']; ?></td>
+                    <td><?php echo $row['od_total']; ?></td>
                     <td><?php echo $row['od_date']; ?></td>
                      <td><?php echo $row['od_exp_date']; ?></td>
                     <td><?php echo $row['od_status']; ?></td>

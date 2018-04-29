@@ -10,7 +10,7 @@ function saveOrder($total)
     $user_id = $_SESSION['plaincart_customer_id'];
 	$orderId       = 0;		//ในตอนแรกรหัสใบสั่งสินค้าจะเป็น 0 
 	$shopConfig = getShopConfig();
-	//$shippingCost  = $tran;
+    $shippingCost  = $total;
 
 	//กำหนด array() ขึ้นมา เพื่อเก็บข้อมูลของการผู้ชื้อและผู้รับสินค้า
 	$requiredField = array('hidShippingFirstName', 'hidShippingLastName', 'hidShippingEmail', 'hidShippingAddress1', 'hidShippingCity', 'hidShippingPostalCode',

@@ -8,7 +8,7 @@ require_once 'library/cart-functions.php';
 $catId  = (isset($_GET['c']) && $_GET['c'] != '1') ? $_GET['c'] : 0;
 $customerStringMail = '';
 
-if(isset($_POST['txtUserPrice'])){
+if(isset($_POST['txtUserOrderNo'])){
         $type = $_FILES["pic"]["type"];
 /*	if(md5($_POST['captcha']) == $_SESSION['captchaKey']){*/
         $image = "upload_".uniqid().".JPG";
@@ -191,7 +191,7 @@ if(isset($_SESSION['plaincart_success']) && $_SESSION['plaincart_success']!=null
   				</tr>
     			<tr> 
    					<td width="150" class="">จำนวนเงิน <span class="label label-warning">ต้องการ</span></td>
-   					<td class=""> <input name="txtUserPrice" type="text" class="box" id="txtUserPrice" size="32" maxlength="32" onKeyUp="checkNumber(this);"></td>
+   					<td class=""> <input name="txtUserPrice" type="text" class="box" id="txtUserPrice" size="32" maxlength="32"></td>
   				</tr>
                 <tr>
                       <td width="150" class="">อัพโหลดใบเสร็จ <span class="label label-warning">ต้องการ</span></td>
@@ -288,9 +288,23 @@ $(function(){
 });
 $('#txtUserOrderNo').on('focusout',function(){
     console.log("gg");
+    var od_id = $('#txtUserOrderNo').val();
     $.ajax({
-        url = "query_order_"
-    })
+        url : "query_total.php",
+        method : "POST",
+        data : {data:od_id},
+        success:function(data){
+            console.log(data);  
+            if(data != "ไม่มีรายการ"){
+                $('#txtUserPrice').val(data);
+                $('#txtUserPrice').attr("disabled", true).css("color","#006400");
+            }
+            else{
+                $('#txtUserPrice').val("ไม่มีรายการบิลนี้");
+                $('#txtUserPrice').attr("disabled", true).css("color","#DC143C");    
+            }
+        }    
+    });
 });
 </script>
 
