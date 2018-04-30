@@ -119,11 +119,7 @@ for ($i = 0; $i < $numItem; $i++) {
             <td class=""><?php echo $_POST['txtShippingAddress1']; ?>
                 <input name="hidShippingAddress1" type="hidden" id="hidShippingAddress1" value="<?php echo $_POST['txtShippingAddress1']; ?>"></td>
         </tr>
-        <tr> 
-            <td width="150" class="">ตำบล</td>
-            <td class=""><?php echo $_POST['txtShippingAddress2']; ?>
-                <input name="hidShippingAddress2" type="hidden" id="hidShippingAddress2" value="<?php echo $_POST['txtShippingAddress2']; ?>"></td>
-        </tr>
+    
          <tr> 
             <td width="150" class="">เขต/อำเภอ</td>
             <td class=""><?php echo $_POST['txtShippingCity']; ?>
@@ -143,6 +139,11 @@ for ($i = 0; $i < $numItem; $i++) {
             <td width="150" class="">โทรศัพท์</td>
             <td class=""><?php echo $_POST['txtShippingPhone'];  ?>
                 <input name="hidShippingPhone" type="hidden" id="hidShippingPhone" value="<?php echo $_POST['txtShippingPhone']; ?>"></td>
+        </tr>
+        <tr id = "add2"> 
+            <td width="150" class="">ตำบล</td>
+            <td class=""><?php echo $_POST['txtShippingAddress2']; ?>
+                <input name="hidShippingAddress2" type="hidden" id="hidShippingAddress2" value="<?php echo $_POST['txtShippingAddress2']; ?>"></td>
         </tr>
     </table>
     </div>
@@ -174,11 +175,7 @@ for ($i = 0; $i < $numItem; $i++) {
             <td class=""><?php echo $_POST['txtPaymentAddress1']; ?>
                 <input name="hidPaymentAddress1" type="hidden" id="hidPaymentAddress1" value="<?php echo $_POST['txtPaymentAddress1']; ?>"></td>
         </tr>
-        <tr> 
-            <td width="150" class="">ตำบล</td>
-            <td class=""><?php echo $_POST['txtPaymentAddress2']; ?> <input name="hidPaymentAddress2" type="hidden" id="hidPaymentAddress2" value="<?php echo $_POST['txtPaymentAddress2']; ?>"> 
-            </td>
-        </tr>
+    
        <tr> 
             <td width="150" class="">เขต/อำเภอ</td>
             <td class=""><?php echo $_POST['txtPaymentCity']; ?>
@@ -196,6 +193,11 @@ for ($i = 0; $i < $numItem; $i++) {
          <tr> 
             <td width="150" class="">เบอร์โทรศัพท์</td>
             <td class=""><?php echo $_POST['txtPaymentPhone'];  ?> <input name="hidPaymentPhone" type="hidden" id="hidPaymentPhone" value="<?php echo $_POST['txtPaymentPhone']; ?>"></td>
+        </tr>
+        <tr id = "add2_2"> 
+            <td width="150" class="">ตำบล</td>
+            <td class=""><?php echo $_POST['txtPaymentAddress2']; ?> <input name="hidPaymentAddress2" type="hidden" id="hidPaymentAddress2" value="<?php echo $_POST['txtPaymentAddress2']; ?>"> 
+            </td>
         </tr>
     </table>
     </div>
@@ -239,6 +241,8 @@ for ($i = 0; $i < $numItem; $i++) {
     }
     </style>
 <script>
+    document.getElementById("add2").style.visibility = "hidden";
+    document.getElementById("add2_2").style.visibility = "hidden";
     function printDiv(divName) {
      var printContents = document.getElementById(divName).innerHTML;
      console.log(printContents);

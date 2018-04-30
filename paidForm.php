@@ -15,7 +15,7 @@ if(isset($_POST['txtUserOrderNo'])){
         $path = 'image_upload_user/' . basename($image);
        // $path = iconv("utf-8", "cp936", $path);
 		$name = (isset($_POST['txtUserFirstName']))?$_POST['txtUserFirstName']:'';
-
+        //$amount1 = $_POST['txtUserPrice'];
 		$phone = (isset($_POST['txtUserPhone']))?$_POST['txtUserPhone']:'';
 		$email = (isset($_POST['txtUserEmail']))?$_POST['txtUserEmail']:'';
 		$bank = (isset($_POST['txtShopBank']))?$_POST['txtShopBank']:'';
@@ -26,7 +26,7 @@ if(isset($_POST['txtUserOrderNo'])){
 	    $upload_pic = (isset($_FILES['pic']['name']))?
         $_FILES['pic']['name']:'';
 		$shopEmail  = $shopConfig['email'];
-
+        //echo $amount1 ;
 		$subject = '<h3>ลูกค้าโอนเงิน</h3>';
 		$customerStringMail = '<p>ชื่อลูกค้า : '.$name.'</p>';
 		$customerStringMail .= '<p>เบอร์โทรศัพท์ : '.$phone.'</p>';
@@ -297,7 +297,10 @@ $('#txtUserOrderNo').on('focusout',function(){
             console.log(data);  
             if(data != "ไม่มีรายการ"){
                 $('#txtUserPrice').val(data);
-                $('#txtUserPrice').attr("disabled", true).css("color","#006400");
+                var num = parseInt(data);
+                console.log(typeof(data));
+                $('#txtUserPrice').attr("enabled", false).css("color","#006400");
+                //document.getElementById('txtUserPrice').value = num ;
             }
             else{
                 $('#txtUserPrice').val("ไม่มีรายการบิลนี้");

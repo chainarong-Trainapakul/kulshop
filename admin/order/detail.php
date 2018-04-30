@@ -31,7 +31,16 @@ $sql = "SELECT od_date, od_last_update, od_status, od_shipping_first_name, od_sh
 			   od_memo
 	    FROM tbl_order 
 		WHERE od_id = $orderId";
-
+$sql2 = "select * from tbl_payment where od_id = '$orderId' order by od_date DESC";
+$result2 = dbQuery($sql2);
+$payto = array();
+$time_transection =array();
+$pic = array();
+while($row = dbFetchAssoc($result2)){
+    $payto[] = $row['od_bank'];
+    $time_transection[] = $row['od_date'];
+    $pic[] = $row['upload_pic'];
+}
 $result = dbQuery($sql);
 extract(dbFetchAssoc($result));
 //กรณีต้องการเปลี่ยนสถานะของใบสั่งซื้อ ให้กำหนด Drop down list แสดงสถานะที่สามารถเปลี่ยนได้
@@ -89,10 +98,12 @@ foreach ($orderStatus as $status) {
     </table>
 </form>
 
+
+</form>
 <p>&nbsp;</p>
 <table width="550" border="0"  align="center" cellpadding="5" cellspacing="1" class="detailTable">
     <tr id="infoTableHeader"> 
-        <td colspan="3">Ordered Item</td>
+        <td colspan="3">รายการ</td>
     </tr>
     <tr align="center" class="label"> 
         <td>จำนวน/ชื่อสินค้า</td>
@@ -127,6 +138,25 @@ for ($i = 0; $i < $numItem; $i++) {
         <td align="right"><?php echo displayAmount($od_shipping_cost + $subTotal); ?></td>
     </tr>
 </table>
+<p>&nbsp;</p>
+<form action="" method="post" name="frmOrder" id="frmOrder">
+    <table width="550" border="0"  align="center" cellpadding="5" cellspacing="1" class="detailTable">
+<tr id="infoTableHeader"> 
+        <td colspan="3">การทำรายการ</td>
+    </tr>
+   <tr class="content"> 
+        <td colspan="2" align="right">โอนมาที่</td>
+        <td align="right"><?php if($payto[0] == "เลือกธนาคาร"){echo "-";}else{echo $payto[0];} ?></td>
+    </tr>
+           <tr class="content"> 
+        <td colspan="2" align="right">วันที่ทำรายการ</td>
+        <td align="right"><?php echo $time_transection[0]; ?></td>
+    </tr>
+        <tr class="content"> 
+        <td colspan="2" align="right">หลักฐานการโอนเงิน</td>
+        <td align="right"><?php if($pic[0] == ""){echo "-";}else{ echo '<a href="../../'.$pic[0].'">ดูหลักฐานการโอนเงิน</a>';} ?></td>
+    </tr>
+    </table>
 <p>&nbsp;</p>
 <table width="550" border="0"  align="center" cellpadding="5" cellspacing="1" class="detailTable">
     <tr id="infoTableHeader"> 

@@ -136,7 +136,7 @@ require_once 'include/header.php';
 <div id="receipt" class="panel panel-info">
     <div><center><label>ร้านชัยสิทธิ์เกษตร</label></center></div>
         <div><center><label>36/1 ม.3 ต.หนองบัว อ.บ้านแพ้ว จ.สมุทรสาคร 74120</label></center></div>
-    <div><center><label>โทร.081-9177716 &nbsp;&nbsp; kulthidakukps@gmail.com</label></center></div>
+    <div><center><label>โทร.081-9177716 &nbsp;&nbsp; chaiyasitkaset@gmail.com</label></center></div>
     <br>
     <div><lable><center>เลขที่ใบเสร็จ : <?php echo $receipt_no ?>&nbsp;&nbsp;&nbsp;&nbsp;สั่งซื้อเมื่อ : <?php echo $date_od ?></center></lable></div>
     <br>
@@ -182,10 +182,10 @@ for ($i = 0; $i < $numItem; $i++) {
     <div><center><label>*** หากไม่ชำระเงินเกิน 3 วัน ทางร้านจะยุติรายการสั่งซื้อ ***</label></center></div>
     <div><label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;กรุณาโอนเงินมาที่ </label></div>
     <div>&nbsp;&nbsp;&nbsp;769-2-49734-8 ธ.ไทยพาณิชย์ น.ส.กุลธิดา วนาประเสริฐ สาขา กำแพงแสน</div>
-    <div>&nbsp;&nbsp;&nbsp;115-3-40984-4 ธ.กรุงไทย    น.ส.อัญมณี วนาประเสริฐ สาขา บ้านแพ้ว</div>
+    <div>&nbsp;&nbsp;&nbsp;115-3-40984-4 ธ.กรุงไทย    น.ส.อัญมณี วนาประเสริฐ สาขา ปากเพรียว</div>
     <div>&nbsp;&nbsp;&nbsp;371-3-00653-8 ธ.กรุงเทพ    นายชัยสิทธิ์ วนาประเสริฐ  สาขา บ้านแพ้ว</div>
 </div>
-                   <center><input name="btnConfirm1" type="button" onClick="printDiv('receipt');" value="พิมพ์ใบเสร็จ" class="btn btn-primary"></center>
+                   <center><input name="btnConfirm1" type="button" onClick="printDiv('receipt');" value="พิมพ์ใบแจ้งหนี้" class="btn btn-primary"></center>
                   <p>&nbsp;</p></td>
             </tr>
          </table>

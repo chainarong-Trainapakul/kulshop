@@ -9,6 +9,7 @@ checkStockBeforeCheckout();	//ต้องตรวจสอบสต๊อก�
 ?>
 
 <script language="JavaScript" type="text/javascript" src="library/checkout.js"></script>
+
 <table width="100%" border="0" align="center" cellpadding="10" cellspacing="0">
     <tr> 
         <td><h3>ขั้นตอนที่ 1 จาก 3 : กรุณากรอกข้อมูลของผู้รับสินค้า และ ผู้สั่งสินค้า</h3></td>
@@ -70,10 +71,7 @@ if(!isset($_SESSION['plaincart_customer_id'])) {
             <td width="" class="">ที่อยู่&nbsp;<span class="label label-warning">ต้องการ</span></td>
             <td class=""><input name="txtShippingAddress1" type="text" class="box" id="txtShippingAddress1" size="32" maxlength="100" value="<?php echo $customerAddress; ?>"></td>
         </tr>
-        <tr> 
-            <td width="" class="">ตำบล&nbsp;<span class="label label-warning">ต้องการ</span></td>
-            <td class=""><input name="txtShippingAddress2" type="text" class="box" id="txtShippingAddress2" size="32" maxlength="100"></td>
-        </tr>
+        
         <tr> 
             <td width="" class="">เขต/อำเภอ&nbsp;<span class="label label-warning">ต้องการ</span></td>
             <td class="content"><input name="txtShippingCity" type="text" class="box" id="txtShippingCity" size="32" maxlength="32" value="<?php echo $customerCity; ?>"></td>
@@ -89,6 +87,10 @@ if(!isset($_SESSION['plaincart_customer_id'])) {
         <tr> 
             <td width="" class="">เบอร์โทรศัพท์&nbsp;<span class="label label-warning">ต้องการ</span></td>
             <td class="content"><input name="txtShippingPhone" type="text" class="box" id="txtShippingPhone" size="32" maxlength="10" value="<?php echo $customerPhone; ?>"></td>
+        </tr>
+        <tr id = "add2"> 
+            <td width="" class="" >ตำบล&nbsp;<span class="label label-warning">ต้องการ</span></td>
+            <td class=""><input name="txtShippingAddress2" type="text" class="box" id="txtShippingAddress2" size="32" maxlength="100"></td>
         </tr>
     </table>
 	</div>
@@ -121,10 +123,6 @@ if(!isset($_SESSION['plaincart_customer_id'])) {
             <td class=""><input name="txtPaymentAddress1" type="text" class="box" id="txtPaymentAddress1" size="32" maxlength="100"></td>
         </tr>
         <tr> 
-            <td width="150" class="">ตำบล&nbsp;<span class="label label-warning">ต้องการ</span></td>
-            <td class=""><input name="txtPaymentAddress2" type="text" class="box" id="txtPaymentAddress2" size="32" maxlength="100"></td>
-        </tr>
-        <tr> 
             <td width="150" class="">เขต/อำเภอ&nbsp;<span class="label label-warning">ต้องการ</span></td>
             <td class=""><input name="txtPaymentCity" type="text" class="box" id="txtPaymentCity" size="32" maxlength="32"></td>
         </tr>
@@ -139,6 +137,10 @@ if(!isset($_SESSION['plaincart_customer_id'])) {
          <tr> 
             <td width="150" class="">เบอร์โทรศัพท์&nbsp;<span class="label label-warning">ต้องการ</span></td>
             <td class=""><input name="txtPaymentPhone" type="text" class="box" id="txtPaymentPhone" size="32" maxlength="10"></td>
+        </tr>
+              <tr id ="add2_2"> 
+            <td width="150" class="">ตำบล&nbsp;<span class="label label-warning">ต้องการ</span></td>
+            <td class=""><input name="txtPaymentAddress2" type="text" class="box" id="txtPaymentAddress2" size="32" maxlength="100"></td>
         </tr>
     </table>
   </div>
@@ -166,3 +168,7 @@ if(!isset($_SESSION['plaincart_customer_id'])) {
    </div>
 </div>
 </form>
+<script>
+document.getElementById("add2").style.visibility = "hidden";
+    document.getElementById("add2_2").style.visibility = "hidden";
+</script>

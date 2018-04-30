@@ -6,11 +6,12 @@ require_once 'config.php';
 *********************************************************/
 function saveOrder($total)
 {   require_once "./process_total.php";
+    $shippingCost  = $total;
     $total = $subTotal + $total ;
     $user_id = $_SESSION['plaincart_customer_id'];
 	$orderId       = 0;		//ในตอนแรกรหัสใบสั่งสินค้าจะเป็น 0 
 	$shopConfig = getShopConfig();
-    $shippingCost  = $total;
+    
 
 	//กำหนด array() ขึ้นมา เพื่อเก็บข้อมูลของการผู้ชื้อและผู้รับสินค้า
 	$requiredField = array('hidShippingFirstName', 'hidShippingLastName', 'hidShippingEmail', 'hidShippingAddress1', 'hidShippingCity', 'hidShippingPostalCode',

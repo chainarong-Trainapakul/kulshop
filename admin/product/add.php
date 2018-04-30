@@ -24,10 +24,7 @@ $categoryList = buildCategoryOptions($catId);
    <td width="150" class="label">ชื่อสินค้า</td>
    <td class="content"> <input name="txtName" type="text" class="box" id="txtName" size="50" maxlength="100"></td>
   </tr>
-     <tr>
-    <td width="150" class="label">รหัสสินค้า</td>  
-      <td class="content"> <input name="txtid" type="text" class="box" id="txtid"  size="50" maxlength="100"></td>
-  </tr>  
+
   <tr> 
    <td width="150" class="label">คุณสมบัติ</td>
    <td class="content"> <textarea name="mtxDescription" cols="70" rows="10" class="box" id="mtxDescription"></textarea></td>

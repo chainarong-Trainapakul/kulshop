@@ -2,6 +2,7 @@ function setPaymentInfo(isChecked)
 {
 	with (window.document.frmCheckout) {
 		if (isChecked) {
+            
 			txtPaymentFirstName.value  = txtShippingFirstName.value;
 			txtPaymentLastName.value   = txtShippingLastName.value;
 			txtPaymentEmail.value      = txtShippingEmail.value;
@@ -26,7 +27,7 @@ function setPaymentInfo(isChecked)
 			txtPaymentLastName.readOnly   = false;
 			txtPaymentEmail.readOnly      = false;
 			txtPaymentAddress1.readOnly   = false;
-			txtPaymentAddress2.readOnly   = false;
+			//txtPaymentAddress2.readOnly   = false;
 			txtPaymentPhone.readOnly      = false;
 			txtPaymentState.readOnly      = false;			
 			txtPaymentCity.readOnly       = false;
