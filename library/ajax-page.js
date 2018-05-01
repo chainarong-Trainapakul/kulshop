@@ -76,7 +76,10 @@ $(document).on('click','.show-detail-product',function() {
 		var n = str.indexOf("-");
 		var id = str.slice(n+1);
 		productId = parseInt(id);
-		var currentTagCatId = $('.hidden-cat-product').attr('id');	
+		var currentTagCatId = $('.hidden-cat-product').attr('id');
+           if(currentTagCatId != "productmini-"){
+        	currentTagCatId = "productmini-";
+        }
 		var strCatId = currentTagCatId;
 		var m = strCatId.indexOf("-");
 		var cat = strCatId.slice(m+1);

@@ -53,44 +53,44 @@ if(!isset($_SESSION['plaincart_customer_id'])) {
   <div class="panel-heading">ข้อมูลของผู้รับสินค้า</div>
   <div class="panel-body">
 
-    <table width="550" border="0" align="center" cellpadding="5" cellspacing="1" class="table">
+    <table width="550" border="0" align="center" cellpadding="5" cellspacing="1" class="table" >
 
         <tr> 
             <td width="200" class="">ชื่อ&nbsp;<span class="label label-warning">ต้องการ</span></td>
-            <td class=""><input name="txtShippingFirstName" type="text" class="box" id="txtShippingFirstName" size="32" maxlength="50" value="<?php echo $customerFirstName; ?>"></td>
+            <td class=""><input name="txtShippingFirstName" type="text" class="box" id="txtShippingFirstName" size="32" maxlength="50" readonly style ="background-color:#e0e0d1" value="<?php echo $customerFirstName; ?>"></td>
         </tr>
         <tr> 
             <td width="200" class="">นามสกุล&nbsp;<span class="label label-warning">ต้องการ</span></td>
-            <td class=""><input name="txtShippingLastName" type="text" class="box" id="txtShippingLastName" size="32" maxlength="50" value="<?php echo $customerLastName; ?>"></td>
+            <td class=""><input name="txtShippingLastName" type="text" class="box" id="txtShippingLastName" size="32" maxlength="50" readonly style ="background-color:#e0e0d1" value="<?php echo $customerLastName; ?>"></td>
         </tr>
         <tr> 
             <td width="200" class="">Email&nbsp;<span class="label label-warning">ต้องการ</span></td>
-            <td class=""><input name="txtShippingEmail" type="text" class="box" id="txtShippingEmail" size="32" maxlength="50" value="<?php echo $customerEmail; ?>"></td>
+            <td class=""><input name="txtShippingEmail" type="text" class="box" id="txtShippingEmail" size="32" maxlength="50" readonly style ="background-color:#e0e0d1" value="<?php echo $customerEmail; ?>"></td>
         </tr>
         <tr> 
             <td width="" class="">ที่อยู่&nbsp;<span class="label label-warning">ต้องการ</span></td>
-            <td class=""><input name="txtShippingAddress1" type="text" class="box" id="txtShippingAddress1" size="32" maxlength="100" value="<?php echo $customerAddress; ?>"></td>
+            <td class=""><input name="txtShippingAddress1" type="text" class="box" id="txtShippingAddress1" size="32" maxlength="100" readonly style ="background-color:#e0e0d1" value="<?php echo $customerAddress; ?>"></td>
         </tr>
         
         <tr> 
             <td width="" class="">เขต/อำเภอ&nbsp;<span class="label label-warning">ต้องการ</span></td>
-            <td class="content"><input name="txtShippingCity" type="text" class="box" id="txtShippingCity" size="32" maxlength="32" value="<?php echo $customerCity; ?>"></td>
+            <td class="content"><input name="txtShippingCity" type="text" class="box" id="txtShippingCity" size="32" maxlength="32" readonly style ="background-color:#e0e0d1" value="<?php echo $customerCity; ?>"></td>
         </tr>
         <tr> 
             <td width="" class="">จังหวัด&nbsp;<span class="label label-warning">ต้องการ</span></td>
-            <td class="content"><input name="txtShippingState" type="text" class="box" id="txtShippingState" size="32" maxlength="32" value="<?php echo $customerState; ?>"></td>
+            <td class="content"><input name="txtShippingState" type="text" class="box" id="txtShippingState" size="32" maxlength="32" readonly style ="background-color:#e0e0d1" value="<?php echo $customerState; ?>"></td>
         </tr>
         <tr> 
             <td width="150" class="">รหัสไปรษณีย์&nbsp;<span class="label label-warning">ต้องการ</span></td>
-            <td class=""><input name="txtShippingPostalCode" type="text" class="box" id="txtShippingPostalCode" size="10" maxlength="5" value="<?php echo $customerPostalCode; ?>"></td>
+            <td class=""><input name="txtShippingPostalCode" type="text" class="box" id="txtShippingPostalCode" size="10" maxlength="5" readonly style ="background-color:#e0e0d1" value="<?php echo $customerPostalCode; ?>"></td>
         </tr>
         <tr> 
             <td width="" class="">เบอร์โทรศัพท์&nbsp;<span class="label label-warning">ต้องการ</span></td>
-            <td class="content"><input name="txtShippingPhone" type="text" class="box" id="txtShippingPhone" size="32" maxlength="10" value="<?php echo $customerPhone; ?>"></td>
+            <td class="content"><input name="txtShippingPhone" type="text" class="box" id="txtShippingPhone" size="32" maxlength="10" readonly style ="background-color:#e0e0d1" value="<?php echo $customerPhone; ?>"></td>
         </tr>
         <tr id = "add2"> 
             <td width="" class="" >ตำบล&nbsp;<span class="label label-warning">ต้องการ</span></td>
-            <td class=""><input name="txtShippingAddress2" type="text" class="box" id="txtShippingAddress2" size="32" maxlength="100"></td>
+            <td class=""><input name="txtShippingAddress2" type="text" class="box" id="txtShippingAddress2" size="32" maxlength="100" readonly style ="background-color:#e0e0d1"></td>
         </tr>
     </table>
 	</div>
@@ -169,6 +169,7 @@ if(!isset($_SESSION['plaincart_customer_id'])) {
 </div>
 </form>
 <script>
-document.getElementById("add2").style.visibility = "hidden";
+    document.getElementById("add2").style.visibility = "hidden";
     document.getElementById("add2_2").style.visibility = "hidden";
+    //document.getElementById("txtShippingFirstName").style.backgroundColor = "#e0e0d1";
 </script>

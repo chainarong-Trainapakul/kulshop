@@ -191,7 +191,7 @@ if(isset($_SESSION['plaincart_success']) && $_SESSION['plaincart_success']!=null
   				</tr>
     			<tr> 
    					<td width="150" class="">จำนวนเงิน <span class="label label-warning">ต้องการ</span></td>
-   					<td class=""> <input name="txtUserPrice" type="text" class="box" id="txtUserPrice" size="32" maxlength="32"></td>
+   					<td class=""> <input name="txtUserPrice" type="text" class="box" id="txtUserPrice" size="32" maxlength="32" readonly style ="background-color:#e0e0d1"></td>
   				</tr>
                 <tr>
                       <td width="150" class="">อัพโหลดใบเสร็จ <span class="label label-warning">ต้องการ</span></td>

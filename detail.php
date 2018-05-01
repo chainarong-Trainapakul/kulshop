@@ -60,7 +60,9 @@ switch ($view) {
     <td>รวมสุทธิ</td>
     <td>วันที่สั่งซื้อ</td>
     <td>วันที่สิ้นสุดคำสั่งซื้อ</td>
+      
     <td>สถานะ</td>
+    <td>วันที่อัพเดทสถานะ</td>
     <td>เลขพัสดุ</td>  
     
   </tr>
@@ -87,7 +89,7 @@ $sql = "SELECT o.od_id, o.od_shipping_first_name, od_shipping_last_name, od_date
 		ORDER BY od_id DESC;";
     
 $user_id = $_SESSION['plaincart_customer_id'];   
-$sql = "SELECT o.od_exp_date,o.od_id,o.od_total, o.od_shipping_first_name,od_parcelno, od_shipping_last_name, od_date, od_status, SUM(pd_price * od_qty) + od_shipping_cost AS od_amount 
+$sql = "SELECT o.od_exp_date,o.od_id,o.od_total,o.od_last_update, o.od_shipping_first_name,od_parcelno, od_shipping_last_name, od_date, od_status, SUM(pd_price * od_qty) + od_shipping_cost AS od_amount 
 FROM tbl_order o,
 tbl_order_item oi,
 tbl_product p 
@@ -115,6 +117,7 @@ while($row = mysql_fetch_array($result)) {
                     <td><?php echo $row['od_date']; ?></td>
                      <td><?php echo $row['od_exp_date']; ?></td>
                     <td><?php echo $row['od_status']; ?></td>
+                    <td><?php echo $row['od_last_update']; ?>
                     <td><?php echo $row['od_parcelno']; ?></td>
                    
                 </tr>

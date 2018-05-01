@@ -181,9 +181,9 @@ for ($i = 0; $i < $numItem; $i++) {
     <br><br>
     <div><center><label>*** หากไม่ชำระเงินเกิน 3 วัน ทางร้านจะยุติรายการสั่งซื้อ ***</label></center></div>
     <div><label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;กรุณาโอนเงินมาที่ </label></div>
-    <div>&nbsp;&nbsp;&nbsp;769-2-49734-8 ธ.ไทยพาณิชย์ น.ส.กุลธิดา วนาประเสริฐ สาขา กำแพงแสน</div>
-    <div>&nbsp;&nbsp;&nbsp;115-3-40984-4 ธ.กรุงไทย    น.ส.อัญมณี วนาประเสริฐ สาขา ปากเพรียว</div>
-    <div>&nbsp;&nbsp;&nbsp;371-3-00653-8 ธ.กรุงเทพ    นายชัยสิทธิ์ วนาประเสริฐ  สาขา บ้านแพ้ว</div>
+    <div>&nbsp;&nbsp;&nbsp;769-2-49734-8 ธ.ไทยพาณิชย์ น.ส.กุลธิดา วนาประเสริฐ บ.ออมทรัพย์ สาขา กำแพงแสน</div>
+    <div>&nbsp;&nbsp;&nbsp;115-3-40984-4 ธ.กรุงไทย    น.ส.อัญมณี วนาประเสริฐ บ.ออมทรัพย์ สาขา ปากเพรียว</div>
+    <div>&nbsp;&nbsp;&nbsp;371-3-00653-8 ธ.กรุงเทพ    นายชัยสิทธิ์ วนาประเสริฐ บ.ออมทรัพย์ สาขา บ้านแพ้ว</div>
 </div>
                    <center><input name="btnConfirm1" type="button" onClick="printDiv('receipt');" value="พิมพ์ใบแจ้งหนี้" class="btn btn-primary"></center>
                   <p>&nbsp;</p></td>

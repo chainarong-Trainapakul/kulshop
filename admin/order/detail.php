@@ -145,17 +145,47 @@ for ($i = 0; $i < $numItem; $i++) {
         <td colspan="3">การทำรายการ</td>
     </tr>
    <tr class="content"> 
-        <td colspan="2" align="right">โอนมาที่</td>
-        <td align="right"><?php if($payto[0] == "เลือกธนาคาร"){echo "-";}else{echo $payto[0];} ?></td>
+       
+        <td colspan="2" align="left">โอนมาที่</td>
+        <td align="center"><?php 
+            if(count($payto)>0){
+                if($payto[0] == "เลือกธนาคาร" ){
+                    echo "ไม่่มีรายการ";
+                }else{
+                    echo $payto[0];
+                }
+            }
+            else{
+                echo "ไม่มีรายการ";
+            }?>
+       </td>
     </tr>
            <tr class="content"> 
-        <td colspan="2" align="right">วันที่ทำรายการ</td>
-        <td align="right"><?php echo $time_transection[0]; ?></td>
+        <td colspan="2" align="left">วันที่ทำรายการ</td>
+        <td align="center"><?php 
+            if(count($time_transection)>0){
+                echo $time_transection[0];
+            }else{ 
+                echo "ไม่มีรายการ" ;
+            } ?>
+        </td>
     </tr>
         <tr class="content"> 
-        <td colspan="2" align="right">หลักฐานการโอนเงิน</td>
-        <td align="right"><?php if($pic[0] == ""){echo "-";}else{ echo '<a href="../../'.$pic[0].'">ดูหลักฐานการโอนเงิน</a>';} ?></td>
+        <td colspan="2" align="left">หลักฐานการโอนเงิน</td>
+        <td align="center"><?php
+            if(count($payto)>0){
+                if($pic[0] == ""){
+                    echo "ไม่มีรายการ";
+                }else{
+                    echo '<a href="../../'.$pic[0].'">ดูหลักฐานการโอนเงิน</a>';
+                }
+            }
+            else{
+                echo "ไม่มีรายการ";
+            }?>
+        </td>
     </tr>
+        
     </table>
 <p>&nbsp;</p>
 <table width="550" border="0"  align="center" cellpadding="5" cellspacing="1" class="detailTable">
@@ -174,10 +204,6 @@ for ($i = 0; $i < $numItem; $i++) {
         <td width="150" class="label">ที่อยู่</td>
         <td class="content"><?php echo $od_shipping_address1; ?> </td>
     </tr>
-    <tr> 
-        <td width="150" class="label">ตำบล</td>
-        <td class="content"><?php echo $od_shipping_address2; ?> </td>
-    </tr>
    <tr> 
         <td width="150" class="label">เขต/อำเภอ</td>
         <td class="content"><?php echo $od_shipping_city; ?> </td>
@@ -193,6 +219,10 @@ for ($i = 0; $i < $numItem; $i++) {
      <tr> 
         <td width="150" class="label">เบอร์โทรศัพท์</td>
         <td class="content"><?php echo $od_shipping_phone; ?> </td>
+    </tr>
+    <tr id ="add2"> 
+        <td width="150" class="label">ตำบล</td>
+        <td class="content"><?php echo $od_shipping_address2; ?> </td>
     </tr>
 </table>
 <p>&nbsp;</p>
@@ -212,10 +242,6 @@ for ($i = 0; $i < $numItem; $i++) {
         <td width="150" class="label">ที่อยู่</td>
         <td class="content"><?php echo $od_payment_address1; ?> </td>
     </tr>
-    <tr> 
-        <td width="150" class="label">ตำบล</td>
-        <td class="content"><?php echo $od_payment_address2; ?> </td>
-    </tr>
    <tr> 
         <td width="150" class="label">เขต/อำเภอ</td>
         <td class="content"><?php echo $od_payment_city; ?> </td>
@@ -231,6 +257,10 @@ for ($i = 0; $i < $numItem; $i++) {
      <tr> 
         <td width="150" class="label">เบอร์โทรศัพท์</td>
         <td class="content"><?php echo $od_payment_phone; ?> </td>
+    </tr>
+    <tr id = "add2_2"> 
+        <td width="150" class="label">ตำบล</td>
+        <td class="content"><?php echo $od_payment_address2; ?> </td>
     </tr>
 </table>
 <p>&nbsp;</p>
@@ -284,3 +314,8 @@ if(isset($_POST['btnModify'])){
         echo "<script>window.location.href = 'processOrder.php?action=modify&oid=' + '$orderId' + '&status=' + '$cancle';</script>";
 }
 ?>
+<script>
+document.getElementById("add2").style.visibility = "hidden";
+document.getElementById("add2_2").style.visibility = "hidden";
+    
+</script>
